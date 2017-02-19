@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function User(){
+            this.name="abc";
+        }
+        //原型修改对象模板
+        //原型一般不用来创建对象,具体用来给已写好的类添加方法或属性。
+        function Person(){
+            this.id=100;
+        }
+
+        Person.prototype.uname="老曾";
+        Person.prototype.fav=["健身","柳岩","打篮球"];
+        Person.prototype.user=new User();
+        Person.prototype.age=18;
+        var p1=new Person();
+//        alert(p1.user.name);
+        p1.user.name="lisi";
+        p1.age=20;
+        var p3=new Person();
+//        alert(p3.user.name);
+        alert(p3.age);
+
+        /*alert(p1.uname);  //老曾
+        alert(p1.fav);   //"健身","柳岩","打篮球"
+        p1.uname="老司机";
+//        p1.fav.push("开车");
+        p1.fav=["健身","柳岩","打篮球","开车"];
+        p1.id=200;
+
+        var p2=new Person();
+        alert(p2.id);
+        alert(p2.uname); //??
+        alert(p2.fav); //??*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

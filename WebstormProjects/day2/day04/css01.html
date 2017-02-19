@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .a{
+            border: 1px solid blue;
+            width: 200px;
+            height:100px
+        }
+        .b{
+            border: 1px solid green;
+            width: 300px;
+            height:300px
+        }
+    </style>
+    <script src="util.js"></script>
+    <script>
+        //操作style单个属性
+        function showDiv(){
+            var con1=$("#con1");
+            con1.style.display="block";
+        }
+        function hideDiv(){
+            var con1=$("#con1");
+            con1.style.display="none";
+        }
+        function hideOrShow(){
+            var con1=$("#con1");
+            if(con1.style.display=="none"){
+                con1.style.display="block";
+            }else{
+                con1.style.display="none";
+            }
+        }
+        //操作多个属性
+        function addDiv(){
+            var con1=$("#con1");
+//            con1.style.width="500px";
+//            con1.style.height="500px";
+            //第一种方式
+//            con1.style="border: 1px solid red;width: 500px;height:500px";
+            //第二种方式
+            con1.style.cssText="border: 1px solid red;width: 500px;height:500px";
+        }
+
+        function changeDiv(){
+            var con2=$("#con2");
+            //操作class
+            //第一种(常用)
+//            con2.className="b";
+            //第二种
+            con2.setAttribute("class","b");
+        }
+    </script>
+</head>
+<body>
+    <div id="con1" style="border: 1px solid red;width: 400px">
+        <div>aaaaaaaaaaaa</div>
+        <div>bbbbbbbbbbbb</div>
+        <div>cccccccccccc</div>
+        <div>dddddddddddd</div>
+    </div>
+    <div id="con2" class="a"></div>
+    <input type="button" value="显示" onclick="showDiv()" />
+    <input type="button" value="隐藏" onclick="hideDiv()" />
+    <input type="button" value="显示/隐藏" onclick="hideOrShow()" />
+    <input type="button" value="div变长变高" onclick="addDiv()" />
+    <input type="button" value="操作class" onclick="changeDiv()" />
+</body>
+</html>

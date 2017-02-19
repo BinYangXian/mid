@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //三种方式的联系,第一种和第二种本质上是在调用第三种,在使用上是没有区别的。
+        //三种方式的区别，第一种定义方式会最优先加载，后两种方式会顺序加载。
+        //第一种函数的定义方式
+//        test1();
+        function test1(){
+            alert("函数的第一种定义方式");
+        }
+//        test1();
+        //第二种函数的定义方式
+
+        var test2=function(){
+            alert("函数的第二种定义方式");
+        }
+        //第三种函数的定义方式
+//        var test3=new Function("alert('函数的第三种定义方式')");
+//        test3();
+
+        var test4=new Function('a','b','alert(a+b)');
+        test4(200,300);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //按键盘的上下左右  分别让按钮 进行移动
+        //1.添加一个onkeydown事件，onkeydown事件 放在哪里？(body)
+        //2.获取上下左右的按键码    左37 上38 右39 下40
+        //3.事件源是button吗？？document.getElementById("but")
+        //4.操作marginLeft和marginTop属性
+        function fly(event){
+            var but=document.getElementById("but");
+//            alert(but.style.marginLeft);
+//            but.style.marginLeft="330px";
+            var evt=window.event||event;
+            var code=evt.keyCode;
+            var left=but.style.marginLeft;
+            var top=but.style.marginTop;
+            //每次移动的像素
+            var speed=20;
+            switch(code){
+                case 37:
+                    but.style.marginLeft=parseInt(left)-speed+"px";
+                    break;
+                case 38:
+                    but.style.marginTop=parseInt(top)-speed+"px";
+                    break;
+                case 39:
+                    but.style.marginLeft=parseInt(left)+speed+"px";
+                    break;
+                case 40:
+                    but.style.marginTop=parseInt(top)+speed+"px";
+                    break;
+            }
+        }
+    </script>
+</head>
+<body onkeydown="fly(event)">
+    <input type="button" value="灰机"  style="margin-left: 300px;margin-top: 300px" id="but" />
+</body>
+</html>

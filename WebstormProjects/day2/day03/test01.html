@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(){
+            //警告框   alert(内容)
+//            alert("hello!");
+            //询问框  prompt(内容)   返回用户输入的内容
+//            var result=prompt("请输入用户名");
+//            alert(result);
+            //确认框 confirm(内容 )  确定true  取消false
+            var result=confirm("你确定吗?");
+            alert(result);
+        }
+//        test();
+
+        function testSub(){
+            var result=confirm("你确定登陆吗?");
+            return result;
+        }
+    </script>
+</head>
+<body>
+    <form action="http://www.baidu.com" method="get" onsubmit="return testSub()">
+        用户名:<input type="text" name="uname" /><br/>
+        密码:<input type="password" name="pwd" /><br/>
+        <input type="submit" value="登陆" />
+    </form>
+</body>
+</html>

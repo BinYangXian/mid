@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="work.js" charset="gb2312"></script>
+    <script>
+        /*
+         1[0][0]
+         1[1][0]   1[1][1]
+         1[2][0]   2[2][1]   1[2][2]
+         1[3][0]   3[3][1]   3[3][2]   1[3][3]
+         1   4   6   4   1
+         1   5   10  10  5   1
+         1   6   15  20  15  6   1
+         1   7   21  35  35  21  7   1
+         1   8   28  56  70  56  28  8   1
+         第几行就有几列
+
+         每行的第一列   j为0时候
+         每行的最后一列   i和j相等的时候
+         array[2][1]=array[1][0]+array[1][1]
+         array[3][1]=array[2][0]+array[2][1]
+
+         array[i][j]=array[i-1][j-1]+array[i-1][j]
+        * */
+        function yanghui(num){
+            if(typeof num=="number"&&num>0){
+                //创建一维数组
+                var array=new Array(num);
+                //创建二维数组
+                for(var i=0;i<array.length;i++){
+                    array[i]=new Array(i+1);
+                    for(var j=0;j<array[i].length;j++){
+                        if(j==0||i==j){
+                            //每行的首尾 赋值为1
+                            array[i][j]=1;
+                        }else{
+                            //非首尾的情况
+                            array[i][j]=array[i-1][j-1]+array[i-1][j];
+                        }
+                        document.write(array[i][j]+"&nbsp;");
+                    }
+                    document.write("<br/>");
+                }
+            }else{
+                alert("参数不正确");
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="99乘法表" onclick="test99()" />
+    <input type="button" value="数组冒泡"  onclick="maopao()"/>
+    <input type="button" value="杨辉三角"  onclick="yanghui(8)"/>
+</body>
+</html>

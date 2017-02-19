@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{color:red}
+    </style>
+    <script src="../day04/util.js"></script>
+    <script>
+       //点击提交  自动对需要验证的表单域进行验证
+       /*
+            valiType   1 普通文本的验证    2验证重复(类似于重复密码)
+                       1:spanId   装错误信息的span的id
+                         regExp   正则表达式
+                         nullMsg  为空 的时候的提示信息
+                         errorMsg  错误的时候的提示信息
+                       2:spanId   装错误信息的span的id
+                         errorMsg  错误的时候的提示信息
+                         compareName  要比较的表单域的name值
+
+       */
+        function valiAll(formObj){
+            //获取所有表单域元素
+            var eles=formObj.elements;
+            for(var i=0;i<eles.length;i++){
+                //获取存放错误信息的span
+                var msgSpan=$("#"+eles[i].getAttribute("spanId"));
+                //获取该表单域的值
+                var val=eles[i].value;
+                var errorMsg=eles[i].getAttribute("errorMsg");
+                var valiType=eles[i].getAttribute("valiType");
+                if(valiType==1){
+                    //普通文本验证
+                    eval("var regExp="+eles[i].getAttribute("regExp"));
+                    var nullMsg=eles[i].getAttribute("nullMsg");
+                    if(!val){
+                        msgSpan.innerHTML=nullMsg;
+                    }else if(!regExp.test(val)){
+                        msgSpan.innerHTML=errorMsg;
+                    }else{
+                        msgSpan.innerHTML="";
+                    }
+                }else if(valiType==2){
+                    //重复验证
+                    var compareName=eles[i].getAttribute("compareName");
+                    var compareVal=eles[i].form[compareName].value;
+                    if(val!=compareVal){
+                        msgSpan.innerHTML=errorMsg;
+                    }else{
+                        msgSpan.innerHTML="";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="javascript:void(0)" method="get" onsubmit="return valiAll(this)">
+        用户名:<input type="text" name="uname" valiType="1" spanId="unameSpan" regExp="/^\w{6,16}$/" nullMsg="用户名不能为空" errorMsg="用户名只能由6-16位字母数字下划线组成"/><span id="unameSpan"></span><br/>
+        密码:<input type="password" name="pwd" valiType="1" spanId="pwdSpan" regExp="/^[a-zA-Z0-9]{6,16}$/" nullMsg="密码不能为空" errorMsg="用户名只能由6-16位字母数字组成" /><span id="pwdSpan"></span><br/>
+        重复密码:<input type="password" name="repwd" valiType="2" spanId="repwdSpan" errorMsg="两次密码输入不一致" compareName="pwd" /><span id="repwdSpan"></span><br/>
+        <input type="submit" value="注册" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{color:red}
+    </style>
+    <script src="../day04/util.js"></script>
+    <script>
+        function valiData(val,spanId,regExp,nullMsg,errorMsg){
+            var msgSpan=$("#"+spanId);
+            //用户名只能由6-16位字母数字下划线组成
+            if(!val){
+                msgSpan.innerHTML=nullMsg;
+            }else if(!regExp.test(val)){
+                msgSpan.innerHTML=errorMsg;
+            }else{
+                msgSpan.innerHTML="";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- val,spanId,regExp,nullMsg,errorMsg-->
+    <form action="#" method="get">
+        用户名:<input type="text" name="uname" onchange="valiData(this.value,'unameSpan',/^\w{6,16}$/,'用户名不能为空','用户名只能由6-16位字母数字下划线组成')"/><span id="unameSpan"></span><br/>
+        密码:<input type="password" name="pwd" onchange="valiData(this.value)" /><span id="pwdSpan"></span><br/>
+        手机号:<input type="text" name="phone" onchange="valiData(this.value)" /><span id="phoneSpan"></span><br/>
+        邮箱:<input type="text" name="mail" onchange="valiData(this.value)" /><span id="mailSpan"></span><br/>
+        <input type="submit" value="注册" />
+    </form>
+</body>
+</html>

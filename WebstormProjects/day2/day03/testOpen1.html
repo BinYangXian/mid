@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function testOpen(){
+            //window.open(url,windowName);
+            //url  打开新窗口的地址
+            //windowName    如果windowName的值有对应的窗口叫这个名，就在该窗口打开，如果没有则新建窗口。
+
+//            open("butExam.html","fly");  可以打开本地资源
+            //第三个属性  是窗口的自身属性，查api
+            window.open("http://www.baidu.com","baidu","width=300px,height=300px,scrollbars=yes,toolbar=yes");
+        }
+        function testOpen2(){
+            window.open("http://www.sina.com","baidu");
+        }
+
+
+    </script>
+</head>
+<body>
+    <input type="button" value="打开一个新窗口"  onclick="testOpen()"/>
+    <input type="button" value="打开另一个新窗口"  onclick="testOpen2()"/>
+</body>
+</html>

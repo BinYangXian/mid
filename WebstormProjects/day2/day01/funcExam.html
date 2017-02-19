@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        test();  //777777777777777777
+        function test(){
+            alert(555555555555555);
+        }
+        test();//777777777777777777
+        var  test=function(){
+            alert(1111111111111);
+        }
+        test();//1111111111111111
+        function test(){
+            alert(66666666666666);
+        }
+        test();//111111111111111111
+        var  test=new Function("alert(2222222222222)");
+        test();//2222222222222222
+        var  test=function(){
+            alert(3333333333333);
+        }
+        test();//33333333333333333
+        function test(){
+            alert(77777777777777);
+        }
+        test();//333333333333333333
+        var  test=new Function("alert(4444444444444)");
+
+        test();//4444444444444444444
+
+
+        /*var add=new Function("a","b","c","alert(a+b+c)");
+         var add=function(a,b){
+         alert(a+b);
+         }
+         function add(a){
+         alert(a+100);
+         }
+         add(123,123);*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

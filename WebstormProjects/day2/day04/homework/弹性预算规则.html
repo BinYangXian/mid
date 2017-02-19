@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <title>Untitled Document</title>
+    <script src="../util.js"></script>
+    <script>
+        //删除按钮  点击删除 删除选中行
+        //添加按钮  点击添加 添加一行  第一个是选中状态的checkbox    后面每列是空的普通文本框
+        //点击页面的checkbox如果  是选中  则后面列的值变为可修改状态(将值放入文本框)  如果没有选中  将文本框中的值 存入td变为不可修改状态
+        function delRow() {
+            var tab1 = $("#table1");
+            var cb1 = $("cb1");
+            for (var i = 0; i < cb1.length; i++) {
+                if(cb1[i].checked){
+                    tab1.deleteRow(cb1[i].parentNode.parentNode.rowIndex);
+                    i--;
+                }
+            }
+        }
+        function chaValue(checkBox){
+            var tdAll=getChildNodes(checkBox.parentNode.parentNode);
+            if(checkBox.checked){
+                for(var i=1;i<tdAll.length;i++){ //第一个包含checkBox的td不取
+                    console.log(tdAll[i].innerHTML);
+                    tdAll[i].innerHTML='<input type="text" align="center" value='+tdAll[i].innerHTML+'>';
+                }
+            }else{
+                for(var i=1;i<tdAll.length;i++){ //第一个包含checkBox的td不取
+                    console.log(getFirstChild(tdAll[i]));
+                    var childText=getFirstChild(tdAll[i]);
+                    tdAll[i].innerHTML=childText.value;
+                }
+            }
+        }
+        function addRow(){
+            var tab1 = $("#table1");
+            var newTr=tab1.insertRow(tab1.rows.length);
+            newTr.align="center";
+            var td1=newTr.insertCell(0);
+            td1.innerHTML="<input type='checkbox' name='cb1' onclick='chaValue(this)' checked/>";
+       /*     var inp1=document.createElement("input");
+            inp1.type="checkbox";
+            inp1.name="cb1";
+            inp1.onclick="chaValue(this)";//!!!不对，需要动态添加事件
+            inp1.checked=true;
+            td1.appendChild(inp1);*/
+
+            var td2=newTr.insertCell(1);
+            td2.innerHTML="<input type='text'/>"
+            var td3=newTr.insertCell(2);
+            td3.innerHTML="<input type='text'/>"
+            var td4=newTr.insertCell(3);
+            td4.innerHTML="<input type='text'/>"
+            var td5=newTr.insertCell(4);
+            td5.innerHTML="<input type='text'/>"
+            var td6=newTr.insertCell(5);
+            td6.innerHTML="<input type='text'/>"
+        }
+    </script>
+</head>
+<body>
+<table width="100%" height="100%" border="1">
+    <tr>
+        <td align="center">
+            <input type="button" value="删除" onclick="delRow();">
+        </td>
+        <td align="center">
+            弹性预算规则：<input type="button" value="添加" onclick="addRow();">
+        </td>
+    </tr>
+    <tr>
+        <table id="table1" width="100%" height="100%" border="1">
+            <tr id="tr0">
+                <td align="center">&nbsp;
+                </td>
+                <th align="center">编码</th>
+                <th align="center">弹性计算规则</th>
+                <th align="center">摘要</th>
+                <th align="center">参数</th>
+                <th align="center">说明</th>
+            </tr>
+            <tr id="tr1">
+                <td align="center">
+                    <input type="checkbox" name="cb1" value="111" onclick="chaValue(this);">
+                </td>
+                <td align="center">111</td>
+                <td align="center">按人均标准求和</td>
+                <td align="center">办公用品人月每月10元</td>
+                <td align="center">com.bjsxt.test</td>
+                <td align="center">办公用品预算科目弹性预算</td>
+            </tr>
+            <tr id="tr2">
+                <td align="center">
+                    <input type="checkbox" name="cb1" value="112" onclick="chaValue(this);">
+                </td>
+                <td align="center">112</td>
+                <td align="center">按人均标准求差</td>
+                <td align="center">办公用品人月每月1000元</td>
+                <td align="center">com.bjsxt.test</td>
+                <td align="center">办公用品预算科目弹性预算</td>
+            </tr>
+        </table>
+    </tr>
+</table>
+</body>
+</html>

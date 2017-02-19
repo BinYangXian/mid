@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(){
+            var con= document.getElementsByTagName("div")[0];
+            //获取所有的子节点
+//            var children=con.childNodes;
+//            alert(children.length);
+
+            //获取第一个子节点
+//            var first=con.firstChild;
+//            alert(first);
+
+            //获取最后一个子节点
+//            var last=con.lastChild;
+//            alert(last);
+
+            //获取父节点   没有浏览器差异性问题
+            var b=document.getElementById("b");
+//            var con= b.parentNode;
+//            alert(con.innerHTML);
+//            var c=b.nextSibling;
+//            alert(c);
+//            var a= b.previousSibling;
+//            alert(a);
+            //没有兄弟节点的时候返回null.
+            alert(con.lastChild.nextSibling);
+            alert(con.firstChild.previousSibling);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="测试" onclick="test()" />
+    <div>
+        <div>aaaaaaaaaaaaaaaa</div>
+        <div id="b">bbbbbbbbbbbbbbbb</div>
+        <div>cccccccccccccccc</div>
+        <div>dddddddddddddddd</div>
+    </div>
+</body>
+</html>

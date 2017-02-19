@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //给String 添加一个trim方法
+        String.prototype.myTrim=function(){
+            return  this.replace(/^\s+|\s+$/g,"");
+        }
+
+//        var str="  abc  ";
+//        alert(str.length);
+//        alert(str.myTrim().length);
+
+        //给String 添加一个startsWith方法
+        String.prototype.myStartsWith=function(keyWord){
+            return this.indexOf(keyWord)==0?true:false;
+        }
+        var str="abcdefg"
+        alert(str.myStartsWith("abc"));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

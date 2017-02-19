@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(){
+            //获取表单域的新的方式
+//            var formObj=document.forms["form1"];
+            //form对象.表单域的name值
+//            var unameObj=formObj.uname;
+            //form对象.elements[idx]
+//            var unameObj=formObj.elements[1];
+            //form对象.elements[表单域的name]
+//            var unameObj=formObj.elements["uname"];
+//            var unameObj=formObj.elements["u"];
+//            alert(unameObj.type);
+        }
+        function test2(){
+            //通过表单域元素  可以找到表单对象
+            var unameObj=document.getElementById("u");
+            var formObj=unameObj.form;
+            alert(formObj.method);
+        }
+
+        function test3(){
+            var unameObj=document.form1.uname;
+            unameObj.focus();
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="获取表单域对象" onclick="test()" />
+    <input type="button" value="获取表单对象" onclick="test2()" />
+    <input type="button" value="使用户名成为焦点" onclick="test3()" />
+    <hr/>
+    <form action="http://www.baidu.com" method="get" name="form1" id="form2" onsubmit="return areusure()">
+        用户名:<input type="text" name="uname" id="u"/><br/>
+        密码:<input type="password" name="pwd"  /><br/>
+        <!--
+            disabled  使之失效，不能输入，值不会提交
+            readonly  只读，不能输入，值会提交
+        -->
+        手机号:<input type="text" name="phone" value="110" disabled /><br/>
+        邮箱:<input type="text" name="mail"  value="110@qq.com" readonly="readonly" /><br/>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+    </form>
+</body>
+</html>

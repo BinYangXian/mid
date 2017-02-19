@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+		<title>Untitled Document</title>
+		<script src="../day04/util.js"></script>
+		<script>
+			//删除按钮  点击删除 删除选中行
+			//添加按钮  点击添加 添加一行  第一个是选中状态的checkbox    后面每列是空的普通文本框
+			//点击页面的checkbox如果  是选中  则后面列的值变为可修改状态(将值放入文本框)  如果没有选中  将文本框中的值 存入td变为不可修改状态
+
+
+			//删除选中行
+			function delRow(){
+				var table1=$("#table1");
+				var cbs=$("cb1");
+				for(var i=0;i<cbs.length;i++){
+					if(cbs[i].checked){
+						//用tbody删除行
+						var tbody1=getFirstChild(table1);
+						//要删除的行
+						var delTr=cbs[i].parentNode.parentNode;
+						//通过tbody删除tr
+						tbody1.removeChild(delTr);
+						i--;
+					}
+				}
+			}
+
+			//新添加一行
+			function addRow(){
+				var table1=$("#table1");
+				var newTr=document.createElement("tr");
+				newTr.align="center";
+				var chTd=document.createElement("td");
+				chTd.innerHTML="<input type='checkbox' name='cb1' checked='checked' onclick='chaValue(this)'/> ";
+				newTr.appendChild(chTd);
+//				for(var i=1;i<getChildNodes(getFirstChild(getFirstChild(table1))).length;i++){
+				for(var i=1;i<6;i++){
+					var newTd=document.createElement("td");
+					newTd.innerHTML="<input type='text' />";
+					newTr.appendChild(newTd);
+				}
+				getFirstChild(table1).appendChild(newTr);
+			}
+
+
+			//如果是选中状态  则变为可输入   如果是非选中状态  则变为锁定
+			function chaValue(chObj){
+				var cells=getChildNodes(chObj.parentNode.parentNode);
+				if(chObj.checked){
+					for(var i=1;i<cells.length;i++){
+						var val=cells[i].innerHTML;
+						cells[i].innerHTML="<input type='text' value='"+val+"' />";
+					}
+				}else{
+					for(var i=1;i<cells.length;i++){
+						var val=getLastChild(cells[i]).value;
+						cells[i].innerHTML=val;
+					}
+				}
+			}
+
+
+		</script>
+	</head>
+	<body>
+		<table  width="100%" height="100%"  border = "1"  >
+			<tr>
+				<td align="center"  >
+					<input type="button"  value="删除"   onclick="delRow();"  >
+				</td>
+				<td align="center"  >
+					弹性预算规则：<input type="button"  value="添加"  onclick="addRow();"    >
+				</td>
+			</tr>
+			<tr>
+				<table   id="table1" width="100%" height="100%"  border = "1"  >
+					<tr id="tr0" >
+						<td align="center"  >&nbsp;
+						</td>
+						<th align="center"  >编码</th>
+						<th align="center"  >弹性计算规则</th>	
+						<th align="center"  >摘要</th>
+						<th align="center"  >参数</th>
+						<th align="center"  >说明</th>
+					</tr>
+					<tr  id="tr1">
+						<td align="center"  >
+							<input type="checkbox"   name="cb1" value="111"  onclick="chaValue(this);" >
+						</td>
+						<td align="center"  >111</td>
+						<td align="center"  >按人均标准求和</td>	
+						<td align="center"  >办公用品人月每月10元</td>
+						<td align="center"  >com.bjsxt.test</td>
+						<td align="center"  >办公用品预算科目弹性预算</td>
+					</tr>
+					<tr  id="tr2">
+						<td align="center"  >
+							<input type="checkbox"  name="cb1" value="112"  onclick="chaValue(this);"  >
+						</td>
+						<td align="center"  >112</td>
+						<td align="center"  >按人均标准求差</td>	
+						<td align="center"  >办公用品人月每月1000元</td>
+						<td align="center"  >com.bjsxt.test</td>
+						<td align="center"  >办公用品预算科目弹性预算</td>
+					</tr>
+				</table>		
+			</tr>		
+		</table>
+	</body>
+</html>

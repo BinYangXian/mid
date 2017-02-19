@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+            //event  包含事件类型type，获取事件源获取target IE是srcElement,获取事件的具体信息查文档，记住keyCode.
+            function test(event){
+                //如果获取event对象
+//            var evt=window.event;  //ie浏览器内核支持  火狐不认识
+//            var evt=event;//火狐浏览器内核支持   IE5.0开始支持  在此之前不支持
+                var evt=window.event||event;
+                //获取事件的类型
+                var type=evt.type;
+//            alert(type);
+                //获取事件源
+//            var ele=evt.srcElement;  //IE支持  火狐不支持
+//            var ele=evt.target; //火狐支持  IE不支持
+                var ele=evt.srcElement||evt.target;
+                console.log(ele.value);
+                console.log(ele.type);
+           /*     var ele=document.getElementById("eventTestId");//通过id获取事件源对象,得到的对象一毛一样！
+                console.log(ele.value);
+                console.log(ele.type);*/
+
+//                alert(111);
+
+
+            }
+
+        //测试标签对象
+        function test2(){
+            var inp=document.getElementById("inp");
+            alert(inp.type);
+        }
+
+
+        function test3(event){
+            var evt=window.event||event;
+            //获取具体的事件信息   获取按键码
+            var code=evt.keyCode;
+            alert(code);
+        }
+        function test4(event){
+            //只有鼠标左键和右键可以弹框
+
+            var evt=window.event||event;
+            //获取具体的事件信息   获取鼠标按键
+            var but=evt.button;
+            var msg=navigator.userAgent;
+            if(msg.toUpperCase().indexOf("MSIE")!=-1){
+                //火狐的左键是0    右键是2
+                if(but==1||but==2){
+                    alert("可以哟");
+                }
+            }else{
+                if(but==0||but==2){
+                    alert("可以哟");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="测试event" onclick="test(event)" id="eventTestId"/>
+    <input type="button" value="测试标签对象" onclick="test2()" />
+    <input type="text" value="普通的文本哟" id="inp" onkeydown="test3(event)" />
+    <input type="button" value="左右键有效" onmousedown="test4(event)" />
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(){
+            alert("abc");
+        }
+        function add(a,b){
+            alert(a+b);
+        }
+        //测试setInterval
+        //设置轮询的时候会返回一个唯一标示该轮询的id用于清除
+        function test1(){
+//            window.setInterval("alert(111)",1000);
+            /*window.setInterval(function(){
+                alert("i see you");
+            },1000);
+            window.setInterval(test,2000);*/
+            setInterval(function(){
+                add(123,123);
+            },2000);
+        }
+//        test1();
+
+
+        function startAdd(){
+            var div1= document.getElementById("div1");
+//            alert(div1.id);
+//            alert(div1.value);
+//            alert(div1.textContent);
+//            div1.textContent="aaaaaaa";
+//            innerHTML 标签内的所有内容  innerText 标签内的文本内容
+
+            id=window.setInterval(function(){
+                div1.innerHTML='<font color="red">'+(Number(div1.innerText)+1)+'</font>';
+            },1000);
+        }
+
+        function stopAdd(){
+            window.clearInterval(id);
+        }
+        //设置延时  setTimeout
+        function testtime(){
+            num=window.setTimeout(function(){
+                alert(1111);
+            },5000);
+        }
+        function cleartime(){
+            clearTimeout(num);
+        }
+    </script>
+</head>
+<body>
+
+    <div id="div1"><font color="red">0</font></div>
+    <input type="button" value="开始" onclick="startAdd()" />
+    <input type="button" value="停止" onclick="stopAdd()" />
+    <input type="button" value="产生一个延时" onclick="testtime()" />
+    <input type="button" value="清除一个延时" onclick="cleartime()" />
+</body>
+</html>

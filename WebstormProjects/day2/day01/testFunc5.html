@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //匿名函数自调用
+    /*
+     格式:
+     (function(形参列表){函数体})(实参列表)
+     特点：
+     1.加载完成后会自动调用一次。
+     2.并且只能调用一次
+     用处：
+     初始化一些参数或配置
+     */
+    /*(function(a,b){
+     alert(a+b);
+     })(123,123);
+
+     function add(a,b){
+     alert(a+b);
+     }
+     add(123,123);
+     add(223,1223);*/
+    var result=3;//1 蓝色  2红色   3粉色
+    (function(res){
+        var bo=document.getElementsByTagName("body")[0];
+        if(res==1){
+            bo.style.backgroundColor="blue";
+        }else if(res==2){
+            bo.style.backgroundColor="red";
+        }else if(res==3){
+            bo.style.backgroundColor="pink";
+        }
+    })(result)
+</script>

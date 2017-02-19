@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //eval 会将传入的字符串以js的方式解析
+        function test(){
+            eval("var a=100;alert(a);");
+        }
+//        test();
+        //str表示字符串格式的js代码
+        function test2(str){
+            eval(str);
+        }
+//        test2("for(var i=0;i<5;i++){alert(i)}");
+        //在test2中执行test函数
+//        test2("test();");
+
+        //eval最常用的地方
+        function test3(){
+            //服务器响应的ajax数据就是下面这种
+            var result="{'a':'aaa','b':'bbb'}";
+//            alert(result.a);
+            eval("var json="+result);  //var json={'a':'aaa','b':'bbb'}
+            alert(json.a);
+        }
+//        test3();
+
+
+
+//        alert(typeof test3);   typeof 函数对象  结果是 function
+        function test4(strOrFunc){
+            if(typeof strOrFunc=="function"){
+                strOrFunc();
+            }else if(typeof strOrFunc=="string"){
+                eval(strOrFunc);
+            }
+        }
+
+//        test4("test()");
+//        test4(test);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //js使用this模拟java的继承
+        var Person=function(name,age){
+            this.name=name;
+            this.age=age;
+        }
+
+        function User(id,name,age){
+            this.id=id;
+            this.person=Person;
+            /*
+                this.person=function(name,age){
+                     this.name=name;
+                     this.age=age;
+                }
+                this.person(name,age);
+            */
+            this.person(name,age);
+            //person只是用于this的桥梁，用完后  删除释放空间。
+            delete this.person;
+        }
+
+        //要求  创建一个User对象   拥有Person类的属性
+        var user=new User(1,"zhangsan",18);
+        alert(user.name);
+        alert(user.person);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

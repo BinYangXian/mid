@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="util.js" ></script>
+    <script>
+        function test(){
+            //有差异性问题的原生属性  childNodes  firstChild  lastChild  nextSibling previousSibling
+//            var con= document.getElementsByTagName("div")[0];
+//            var children=con.childNodes;
+//            alert(children.length);
+//            for(var i=0;i<children.length;i++){
+//                alert(children[i].innerHTML);
+//            }
+
+//            var first=getFirstChild(con);
+//            alert(first.innerHTML);
+//            alert(first.nodeName);
+
+
+//            var last=getLastChild(con);
+//            alert(last.innerHTML);
+
+//            var b=getNextSibling(getFirstChild(con));
+////            alert(b.id);
+//            var a=getPreviousSibling(b);
+//            alert(a.innerHTML);
+
+
+            var b=$("#b");
+            alert(b.innerHTML);
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="测试" onclick="test()" />
+    <div>
+        <div>aaaaaaaaaaaaaaaa</div>
+        <div id="b">bbbbbbbbbbbbbbbb</div>
+        <div>cccccccccccccccc</div>
+        <div>dddddddddddddddd</div>
+    </div>
+</body>
+</html>

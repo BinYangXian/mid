@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<title>Untitled Document</title>
+        <script src="util.js"></script>
+		<script>
+			function init(){
+//                var tab1=$("#table1");
+//                var tab1Rows=tab1.rows;
+//                for(var i=1;i<tab1Rows.length;i++){
+//                    var cells=tab1Rows[i].cells;
+//                    alert(cells[0].innerHTML.prop("checked"))
+//                }
+			}
+            function addItems(){
+                var tab1=$("#table1");
+                var children= getChildNodes(getChildNodes(tab1)[0]);
+                console.log(children);
+                var delIndexArr=new Array();
+                for(var i=1;i<children.length;i++){
+                    var sunZi1=getFirstChild(getFirstChild(children[i]))
+                    var sunZi2=getLastChild(children[i])
+                    console.log("sunZi1.checked:"+i+sunZi1.checked);
+                    if(sunZi1.checked){
+                        insertItems(sunZi2.innerHTML,sunZi1.value);
+                        delIndexArr.push(i);
+                    }
+                }
+                var j=0;
+                for(var index=0;index< delIndexArr.length; index++){
+                    console.log("删除的编号"+delIndexArr[index])
+                    tab1.deleteRow(delIndexArr[index]-j);
+                    j++;
+                }
+            }
+            function insertItems(textContent,value){
+                var tab2=$("#table2");
+                var con=getFirstChild(getFirstChild(tab2)).cloneNode(true);
+                getChildNodes(con)[1].innerHTML=textContent;
+                getChildNodes(con)[1].font=
+                getChildNodes(con)[2].innerHTML=value;
+                tab2.appendChild(con);
+                //最后一行插入  插入行或列 都要传入索引 索引从0开始
+//                alert(tab2.rows.length);
+               /* var newTr=tab2.insertRow(tab2.rows.length);
+                var idTd=newTr.insertCell(0);
+                idTd.appendChild()
+                var nameTd=newTr.insertCell(1);
+                nameTd.innerHTML=textContent;
+                var ageTd=newTr.insertCell(2);
+                ageTd.innerHTML=value;*/
+            }
+		</script>
+	</head>
+	<body onload="init()">
+		<table border="1" width="100%" id="table">
+			<tr>
+				<th>可加入预算维度的预算科目</th>
+				<td>&nbsp;</td>
+				<th>已加入预算维度的预算科目</th>
+			</tr>
+			<tr>
+				<td valign="top">
+					<table border="1" width="100%" id="table1">
+						<tr>
+							<td><input type="checkbox" /></td>
+							<th>预算科目名称(科目编码)</th>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例1的编码" /></td>
+							<td align="center">样例1</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例2的编码" /></td>
+							<td align="center">样例2</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例3的编码" /></td>
+							<td align="center">样例3</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例4的编码" /></td>
+							<td align="center">样例4</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例5的编码" /></td>
+							<td align="center">样例5</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例6的编码" /></td>
+							<td align="center">样例6</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox"  name="leftTabCb"  value="样例7的编码" /></td>
+							<td align="center">样例7</td>
+						</tr>
+					</table>
+				</td>
+				<td >
+					<table   width="100%" >
+						<tr>
+							<td align="center"><input type="button" value="加入>>" onclick="addItems()" /></td><br/>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="center"><input type="button" value="<<移除" onclick="delItems()"/></td><br/>
+						</tr>
+					</table>
+				</td>
+				<td valign="top">
+					<table border="1" width="100%" id="table2">
+						<tr  id="tr1" >
+							<td><input type="checkbox"    id="c1" /></td>
+							<th>预算科目名称</th>
+							<th>预算科目编码</th>
+						</tr>
+						<tr id="tr2">
+							<td><input type="checkbox" id="c2"   /></td>
+							<td  align="center" >样例0</td>
+							<td align="center" >样例0的编码</td>
+						</tr>
+					</table>
+				</td>
+			</tr>	
+		</table>
+	</body>
+</html>

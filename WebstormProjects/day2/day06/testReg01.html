@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //测试js中使用正则表达式
+        function test(){
+            //创建正则表达式的对象
+            //   /正则表达式/flags
+//            var reg=/\d+[a-z]+/i;
+            // new RegExp("正则表达式","flags");
+            //注意  如果采用这种方式  \d需要写成\\d
+            var reg=new RegExp("\\d+[a-z]+","g");
+            var str="123abc545sdf";
+            //正则表达式的exec和test方法在匹配的时候都依赖lastIndex属性，如果是g模式，lastIndex会随着匹配的结果进行偏移，如果能匹配到，
+            //则偏移到匹配到的结果的下一个索引,如果不能匹配则归0。非g模式下，lastIndex不随着匹配结果进行偏移。
+            //正则表达式对象.exec(字符串) 返回匹配到的结果的数组    如果不能匹配则返回null
+            alert(reg.exec(str));
+            //正则表达式对象.test(字符串) 如果能够匹配  则结果为true  不能为false
+            alert(reg.test(str));
+        }
+        test();
+
+
+        function test1(){
+            var reg=/\d+[a-z]+/ig;
+            var str="123abc456def";
+            alert(reg.lastIndex);
+            alert(reg.exec(str)); //123abc
+            alert(reg.lastIndex);
+            alert(reg.test(str));//t
+            alert(reg.lastIndex);
+            alert(reg.exec(str)); //null
+            alert(reg.lastIndex);
+            alert(reg.test(str)); //t
+            alert(reg.lastIndex);
+            alert(reg.exec(str)); //456def
+            alert(reg.lastIndex);
+            alert(reg.test(str)); //f
+        }
+//        test1();
+
+        function test2(){
+            //如果正则表达式中  出现了分组   exec 返回的结果  第一个是匹配到的字符串  后面是根据分组匹配到的对应结果
+            var reg=/(\d+)([a-z]+)/ig;
+            var str="123abc456def";
+            console.log(reg.exec(str));
+            console.log(reg.exec(str));
+        }
+        test2();
+    /*    function test3(){
+            var reg=/^(?:[1-4]\d{6}|[1-9]\d{0,5})$/;
+            var arr=[];
+            for(var i=1;i<50000000;i++){
+                if(!reg.test(i)){
+                    arr.push(i);
+                }
+            }
+            console.log("不能匹配到的整数的个数:"+arr.length);
+        }
+//        test3();*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

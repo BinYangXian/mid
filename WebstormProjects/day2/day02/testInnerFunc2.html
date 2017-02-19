@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+       function test() {
+
+           //测试parseInt
+           /*alert(parseInt("100.30")); //100
+           alert(parseInt("100.50"));//100   说明小数部分直接省略   替代原来java的(int)  ***
+           alert(parseInt("00100"));  //会略前导0
+           alert(parseInt("100abc"));//如果传入的字符串前面是数字  直到找到非数字截止  一般巧用于操作  css的像素***
+           alert(parseInt("abc"));//NaN*/
+//         alert(parseInt(00100));//传入的是00开头的数字  是八进制转十进制
+//           alert(parseInt(0X100));//传入的是0x或0X开头的数字  是十六进制转十进制
+
+
+           //巧妙
+           /*var str="100px";
+           var str2=str.replace("px","");
+           var num=Number(str2);
+           alert(num+5);
+
+           alert(parseInt(str)+5);*/
+
+
+
+           //测试 isNaN  只有判断是否是NaN的时候有用
+           /*var a=NaN;
+           if(isNaN(a)){
+               alert("a是一个不是一个数的数!");
+           }*/
+
+
+           //测试isFinite   判断传入的值是否是有限的
+//           alert((1/0)==(4/0));   无穷和无穷是相等的 (符号相同)
+//           alert(isFinite(100));  //true
+//           alert(isFinite((1/0))); //false
+//           alert(isFinite((-1/0)));//false
+//            alert(isFinite(NaN));//FALSE   NaN也是无穷的
+
+
+           //escape(str)将传入的字符串中特殊符号进行编码    unescape(str) 将传入的编码后的字符串解码
+
+           var str="fdsa$@!#@$!*(rwq$&*#!@*^$!)$sda";
+           var newStr=escape(str);
+           alert("编码后:"+newStr);
+           var str2= unescape(newStr);
+           alert("解码后:"+str2);
+       }
+        test();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

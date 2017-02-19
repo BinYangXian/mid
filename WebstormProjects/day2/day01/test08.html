@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //数组
+        function test(){
+            //第一种数组的定义方式
+//            var array=new Array("abc",123,100,true,200);
+            //第二种
+//            var array=new Array(5);
+//            array[0]="abc";
+//            array[1]=123;
+//            array[2]=100;
+//            array[3]=true;
+//            array[4]=200;
+            //第三种
+            var array=["abc",123,100,true,200];
+//            array.length=6;
+//            //js中一般属性能够拿到就能够操作
+//            alert(array.length);
+
+            //可以直接给赋值的某个下标赋值
+//            array[5]="aaa";
+//            array[7]="bbb";
+
+            //数组的重要方法
+            //push  pop  shift  unshift  join
+            //push  在数组的尾部添加一个或多个元素   返回新数组的长度
+            //pop   移除数组最后一个元素  并且返回该元素
+            //unshift  在数组的前面添加一个或多个元素   返回新数组的长度
+            //shift   移除数组第一个元素  并且返回该元素
+            //join   如果没有传参数    会以逗号将数组拼接起来  如果有  则以传入的拼接
+            var newLength=array.push("ccc","ddd");
+//            alert(newLength);
+            var lastEle=array.pop();
+//            alert(lastEle);
+            var newLength2=array.unshift("aaa","bbb");
+//            alert(newLength2);
+            var firstEle=array.shift();
+//            alert(firstEle);
+//            for(var i=0;i<array.length;i++){
+//                alert(array[i]);
+//            }
+//            alert(array);
+            var arrayStr=array.join("-");
+            alert(arrayStr)
+        }
+        test();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

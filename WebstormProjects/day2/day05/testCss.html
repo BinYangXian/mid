@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //函数在定义的时候  变量只起一个占位的作用  在真正执行的时候 才找具体的值
+        function test(){
+            var divs=document.getElementsByTagName("div");
+            for(var i=0;i<divs.length;i++){
+                divs[i].onmouseover=function(){
+//                    divs[i].style.backgroundColor="red";
+                    this.style.backgroundColor="red";
+                }
+                divs[i].onmouseout=function(){
+                    this.style.backgroundColor="white";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>aaaaaaaaaaaaaaaa11</div>
+    <div>aaaaadsadsadsasd22</div>
+    <div>aaaaaaaaaadasdsad2</div>
+    <div>afdjdfdasdffhffdsk</div>
+    <input type="button" value="启动颜色转化" onclick="test()" />
+</body>
+</html>

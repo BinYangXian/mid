@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //分支语句
+        function test(){
+            var a=15;
+            var b=20;
+            //if else
+            if(a>b){
+                document.write("a>b");
+            }else if(a<b){
+                document.write("a&lt;b");
+            }else {
+                document.write("a=b");
+            }
+        }
+//        test();
+
+        //switch语句
+        function test2(a){
+            switch(a){
+                case 1:
+                    alert("传入的是1哦!");
+                    break;
+                case 2:
+                    alert("传入的是2~~");
+                    break;
+                default:
+                    alert("我不知道哟~");
+            }
+        }
+//        test2(2);
+
+        function test3(){
+            var array=new Array("abc",123,true,100,200,300);
+            //第一种经典for循环
+            /*for(var i=0;i<array.length;i++){
+                alert(array[i]);
+            }*/
+            //第二种for循环  在数组里使用的时候 i 代表下标
+            for(var i in array){
+                if(i==3){
+//                    break;  //abc 123 true
+                    continue; //abc 123 true 200 300
+                }
+                alert(array[i]);
+            }
+        }
+        test3();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function SimulationMap() {
+            var json = {};
+            this.json = json;
+            function put(key, value) {
+                this.json[key] = value;  ////???????!!!!!!!!!!!
+            }
+
+            this.put = put;
+            function get(key) {
+                return this.json[key];//!!!不能是this.json[key]才怪
+            }
+
+            this.get = get;
+            function clear() {
+                this.json = {};
+            }
+
+            this.clear = clear;
+            function containsKey(key) {
+//                if(this.json[String(key)]!=undefined){
+                if (this.json[key] != undefined) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            this.containsKey = containsKey;
+            function containsValue(value) {
+
+                for (var i in (this.values())) {
+                    if ((this.values())[i] == arguments[0]) {
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+
+            this.containsValue = containsValue;
+            function isEmpty() {
+                if (this.keySet().length != 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            this.isEmpty = isEmpty;
+            function keySet() {
+                var array = [];
+                for (var key in this.json) {
+                    //取出键
+                    array.push(key);
+                }
+                return array;
+            }
+
+            this.keySet = keySet;
+            function values() {
+                var array = [];
+                for (var key in this.json) {
+                    array.push(this.json[key]);
+                }
+                return array;
+            }
+
+            this.values = values;
+            function remove(key){
+//                if(this.containsKey(arguments[0])){ //可以省略
+                    delete this.json[key];
+//                }
+            }
+            this.remove = remove;
+            function size(){
+                return this.keySet().length;
+            }
+            this.size = size;
+        }
+        var map = new SimulationMap();
+        map.put("aaa", 111);
+        map.put(222, "bbb");
+        console.log("map:" + map);
+        console.log(map.json);
+        console.log(map.get("aaa"));
+        console.log(map.get(222));
+        console.log("map.containsKey(\"aa\"):" + map.containsKey("aa"));
+        console.log("map.containsKey(\"aaa\"):" + map.containsKey("aaa"));
+        console.log("map.containsKey(222):" + map.containsKey(222));
+        console.log("map.containsValue(222):" + map.containsValue(222));
+        console.log("map.containsValue(111):" + map.containsValue(111));
+        console.log("map.containsValue(\"bbb\"):" + map.containsValue("bbb"));
+        console.log("map.isEmpty():" + map.isEmpty());
+        console.log("map.keySet():" + map.keySet());
+        console.log("map.values():" + map.values());
+        console.log("map.size():" + map.size())
+        //        console.log("map.json.length()"+map.json.length()); //json没有length()
+        console.log("map.remove(key):" + map.remove("aaa"))
+        console.log("map.size():" + map.size())
+        console.log("执行了：map.clear();");
+        map.clear();
+        console.log("map.size():" + map.size())
+        console.log("map.isEmpty():" + map.isEmpty());
+        console.log("map.containsKey(\"aaa\"):" + map.containsKey("aaa"));
+        console.log("map:" + map);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

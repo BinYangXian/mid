@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //强制转化(显式转化)    String()  Boolean()   Number()
+        //测试强转为String   传什么  转成什么的字符串类型
+        function testString(){
+            alert(typeof String(100));
+            alert(String(true));
+            alert(String(undefined));
+            alert(String(null));
+        }
+//        testString();
+
+
+        //测试强转为Boolean    除了""  false   undefined  null  0  NaN是false  其他全部是true
+        function testBoolean(){
+//            alert(Boolean(1));
+//            alert(Boolean(" "));
+//            alert(Boolean(true));
+//            alert(Boolean(false));
+//            alert(Boolean(""));
+//            alert(Boolean(NaN));
+//            alert(Boolean(undefined));
+//            alert(Boolean(0));
+//            alert(Boolean(null));
+//            alert(Boolean([]));
+//              alert(Boolean(1/0));
+        }
+
+//        testBoolean();
+        //测试强转为Number
+        function testNumber(){
+            alert(Number(100));   //100
+            alert(Number("100.11"));//100.11
+            alert(Number(""));//0
+            alert(Number("0"));//0
+            alert(Number("abc"));//NaN
+            alert(Number("100abc"));//   NaN     整体如果不能转结果就是NaN
+            alert(Number("00100"));// 100    忽略前导0
+            alert(Number(true));//1
+            alert(Number(false));//0
+            alert(Number(undefined));//NaN
+            alert(Number(null));//0
+        }
+//        testNumber();
+
+        function test(){
+            var result=0;//结果可能为1  或者0
+            if(result){
+                alert("结果为1哦~!");
+            }else{
+                alert("结果为0哦~！ ");
+            }
+        }
+        test();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

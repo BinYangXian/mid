@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*
+            通过open方法打开的窗口称为子窗口，调用open方法的窗口父窗口。
+            父子窗口交互核心思想找对应的window对象。
+            子窗口找父窗口的window对象有一个opener.
+            父窗口找子窗口的window对象是open方法返回的那个对象.
+        */
+        var a="dad";
+
+        function openChild(){
+            //open  有返回值  返回的值就是子窗口的window对象
+            childWin=window.open("childWin.html","newWin");
+            console.log(childWin);
+        }
+
+        function doChildMethod(color){
+//            childWin.childMethod();
+            childWin.changeColor(color);
+        }
+
+        function parentMethod(){
+            alert("这是父窗口的方法");
+        }
+        function getChildParam(){
+            alert(a);//自己的a
+            alert(childWin.a);
+        }
+        function closeChild(){
+            childWin.close();
+        }
+    </script>
+</head>
+<body>
+
+    <input type="button" value="打开子窗口" onclick="openChild()" />
+    <input type="button" value="调用子窗口的方法" onclick="doChildMethod()" />
+    <input type="button" value="红色" onclick="doChildMethod(2)" />
+    <input type="button" value="绿色" onclick="doChildMethod(1)" />
+    <input type="button" value="获取子窗口的全局变量" onclick="getChildParam()" />
+    <input type="button" value="关闭子窗口"  onclick="closeChild()" />
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //工厂模式创建对象
+        function createPerson(name,age,func){
+            var person=new Object();
+            person.name=name;
+            person.age=age;
+            person.func=func;
+            return person;
+        }
+        var person=createPerson("zhangsan",18,function(){
+            alert("传入的方法!!");
+        });
+//        alert("姓名"+person.name);
+//        alert("年龄"+person.age);
+//        person.func();
+
+
+        //通过this创建对象
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+        }
+//        var p=new Person("lisi",28);
+//        alert(p.name);
+//        alert(p.age);
+
+        //测试直接调用函数()  和new 函数()
+        //相同点   都会调用调用一次函数
+        //执行调用函数  返回值只和  return 有关系     new 函数()  的时候 和return没有关系  会产生一个对象
+        function test(){
+            var a="aaa";// var 的东西   和产生出来的对象没有任何关系，只是作为一个中间变量
+            this.b="bbbb"; //对象只和this绑定的属性有关系
+            alert(a);
+            return "hello!";
+        }
+        var t1=test();
+        var t2=new test();
+        console.log(t1);
+        console.log(t2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

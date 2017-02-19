@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //js中的字符串中的正则表达式运用的方法
+        //search    match   replace
+        function changeUser(){
+
+        }
+        //search方法 类似于 indexOf  indexOf传入的参数时字符串     search传入的是正则表达式对象   g和非g模式不影响结果 返回的都是第一个被匹配到的字符串的索引
+        function testSearch() {
+            var reg = /\d+[a-z]+/i;
+            var str = "fds123abc";
+            alert(str.search(reg));
+        }
+        testSearch();
+
+        //match方法   返回匹配到的结果的数组,如果是非g模式，则返回第一个匹配到的结果，如果是g模式，则返回所有匹配到的结果的数组。
+        //如果不能匹配，返回null
+        function testMatch() {
+            var reg = /\d+[a-z]+/ig;
+            var str = "123abc456def";
+            alert(str.match(reg));
+            alert(typeof str.match(reg));
+        }
+        testMatch();
+
+
+        //replace方法  替换正则表达式匹配到的字符串，如果是g模式则全部替换，非g模式只替换第一个匹配到的字符串。
+        function testReplace() {
+            var reg = /([a-z]{2,4})ing\1/ig;
+            var str = "goinggoFADSshowingshowFDSAHKdoingdoDFSA";
+            alert(str.replace(reg, "嘿嘿"));
+
+            var result = "  abc  ".replace(/^\s+|\s+$/g, "");
+            alert(result.length);
+        }
+        testReplace();
+    </script>
+</head>
+<body>
+    <button onclick="changeUser()" value="切换用户"/>
+<a href="clearCookies">切换用户<a/>
+</body>
+</html>

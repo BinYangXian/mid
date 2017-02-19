@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="util.js"></script>
+    <script>
+        function addRow(){
+            var tab1=$("#tab1");
+//            var rows=tab1.rows;
+////            alert(rows.length);
+//            var cells=rows[0].cells;
+//            alert(cells.length);
+
+
+            //最后一行插入  插入行或列 都要传入索引 索引从0开始
+            alert(tab1.rows.length);
+            var newTr=tab1.insertRow(tab1.rows.length);
+            var idTd=newTr.insertCell(0);
+            idTd.innerHTML="5";
+            var nameTd=newTr.insertCell(1);
+            nameTd.innerHTML="五五";
+            var ageTd=newTr.insertCell(2);
+            ageTd.innerHTML="55";
+        }
+
+        function delRow(){
+            var tab1=$("#tab1");
+//            tab1.deleteRow(1);
+            //tr对象中有一个rowIndex标示着该行的索引
+//            var lisiTr=$("#lisi");
+            var zhangsanTr=$("#zhangsan").parentNode;
+            var idx=zhangsanTr.rowIndex;
+            tab1.deleteRow(idx);
+        }
+
+        function test(){
+            alert(getPreviousSibling(getLastChild($("#body"))).checked)
+        }
+    </script>
+</head>
+<body id="body">
+<input type="button" value="添加一行" onclick="addRow()"/>
+<input type="button" value="删除一行" onclick="delRow()"/>
+    <!-- table对象  中默认下面有一个tbody标签-->
+    <table border="1" align="center" width="600px" id="tab1">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td id="zhangsan">张三</td>
+            <td>18</td>
+        </tr>
+        <tr id="lisi">
+            <td>2</td>
+            <td>李四</td>
+            <td>20</td>
+        </tr>
+    </table>
+    <input type="checkbox"  />
+    <input type="button" value="测试多选框是否选中" onclick="test()"/>
+</body>
+</html>

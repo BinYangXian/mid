@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //js使用call和apply模拟java的继承
+        //函数对象.call(thisObj,arg1,arg2...argN)
+        //函数对象.apply(thisObj,[arg1,arg2...argN])
+        //会调用函数对象，并且将函数对象中的this替换为thisObj,arg1,arg2...argN是实参列表
+        var Person=function(name,age){
+            this.name=name;
+        this.age=age;
+        }
+
+        function User(id,name,age){
+            this.id=id;
+//            Person.call(this,name,age);
+            Person.apply(this,[name,age]);
+        }
+        var user=new User(1,"lisi",18);
+        alert(user.name);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

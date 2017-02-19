@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function getBrowserMsg(){
+            //window.navigator.userAgent   获取浏览器信息
+            var msg=window.navigator.userAgent;
+//            alert(msg);
+            if(msg.toLowerCase().indexOf("msie")!=-1){
+                alert("你是使用的ie浏览器");
+            }else if(msg.toLowerCase().indexOf("firefox")!=-1){
+                alert("你是使用的火狐浏览器");
+            }else if(msg.toLowerCase().indexOf("chrome")!=-1){
+                alert("你是使用的google浏览器");
+            }else{
+                alert("赶紧删了吧");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="获取浏览器信息" onclick="getBrowserMsg()" />
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Person(){
+            this.personArguments=arguments;
+            this.getName=function getName(){
+                return this.personArguments[0];
+            }
+            this.getAge=function getAge(){
+                return this.personArguments[1];
+            }
+            this.getGender=function getGender(){
+                return this.personArguments[2];
+            }
+            this.setName=function setName(uname){
+                this.personArguments[0]=uname;
+            }
+            this.setAge=function setAge(uname){
+                this.personArguments[1]=uname;
+            }
+            this.setGender=function setGender(uname){
+                this.personArguments[2]=uname;
+            }
+        }
+        var person=new Person("zhangsan",18,"男");
+        console.log( person.uname);
+        console.log( person.age);
+        console.log( person.gender);
+        console.log(person.getName());
+        console.log(person.getAge());
+        console.log(person.getGender());
+        console.log(person.setName("lisi"));
+        console.log(person.setAge(19));
+        console.log(person.setGender("女"));
+        console.log(person.getName());
+        console.log(person.getAge());
+        console.log(person.getGender());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

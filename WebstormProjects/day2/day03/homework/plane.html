@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function fly(event) {
+            var eve=window.event||event;
+            var plane = document.getElementById("buttonFly");
+            switch (eve.keyCode) {
+                case 38:
+                    var top = parseInt(plane.style.marginTop);
+                    top -= 1;
+                    plane.style.marginTop = top + "px";
+                    break;
+                case 40:
+                    var down = parseInt(plane.style.marginTop);
+                    down += 1;
+                    plane.style.marginTop = down + "px";
+                    break;
+                case 37:
+                    var left = parseInt(plane.style.marginLeft);
+                    left -= 1;
+                    plane.style.marginLeft = left + "px";
+                    break;
+                case 39:
+                    var right = parseInt(plane.style.marginLeft);
+                    right += 1;
+                    plane.style.marginLeft = right + "px";
+                    break;
+            }
+            console.log(plane.style.marginTop);
+            console.log(plane.style.marginLeft);
+        }
+    </script>
+</head>
+<body onkeydown="fly(event)">
+<input type="button" value="灰机" style="margin-left: 300px; margin-top: 200px" id="buttonFly">
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function testonclick(){
+           alert("onclick");
+        }
+        function testondblclick(){
+           alert("ondblclick");
+        }
+        function testonfocus(){
+           console.log("onfocus");
+        }
+        function testonblur(){
+            console.log("onblur");
+        }
+        function testonchange(){
+           alert("onchange");
+        }
+        function testonkeydown(){
+           alert("onkeydown");
+        }
+        function testonmousemove(){
+           alert("onmousemove");
+        }
+        function testonmouseover(){
+           alert("onmouseover");
+        }
+        function testonmouseout(){
+           alert("onmouseout");
+        }
+        function testonload() {
+            var div1=document.getElementById("div1");
+            alert("onload----"+div1);
+        }
+    </script>
+</head>
+<!-- onload  页面加载完成之后触发事件-->
+<body onload="testonload()" id="bo">
+    <input type="button" value="单击按钮"  onclick="testonclick()"/>
+    <input type="button" value="双击按钮"  ondblclick="testondblclick()"/>
+    <input type="text" value="成为焦点/失去焦点" onfocus="testonfocus()" onblur="testonblur()" />
+    <!-- onchange  改变值 并且失去焦点才触发 -->
+    <input type="text" value="改变我试试" onchange="testonchange()"/>
+    <!-- onkeydown 按下键的时候直接触发 -->
+    <input type="text" value="再改变我试试" onkeydown="testonkeydown()"/>
+    <div style="border:1px solid red;width: 300px;height: 200px;margin-bottom: 20px;" onmousemove="testonmousemove()">
+        鼠标移动试试
+    </div>
+    <div style="border:1px solid red;width: 300px;height: 200px;margin-bottom: 20px;" onmouseover="testonmouseover()" >
+        鼠标移入试试
+    </div>
+    <div id="div1" style="border:1px solid red;width: 300px;height: 200px" onmouseout="testonmouseout()" >
+        鼠标移出试试
+    </div>
+</body>
+</html>

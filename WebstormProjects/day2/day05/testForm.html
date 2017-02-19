@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //获取form表单的方式
+        function getForm(){
+            //已知的方式
+//            var formObj=document.getElementById("form2");
+//            var formObj=document.getElementsByTagName("form")[0];
+//            var formObj=document.getElementsByName("form1")[0];
+
+            //新的方式
+            //document.formName
+//            var formObj=document.form1;
+
+            //document.forms[idx]
+//            var formObj=document.forms[1];
+
+            //document.forms[formName]
+//            var formObj=document.forms["form3"];
+            //document.forms[formId]
+            var formObj=document.forms["form2"];
+//            alert(formObj.action);
+//            alert(formObj.method);
+//            alert(formObj.name);
+
+            //formObj.elements  获取所有的表单域节点的数组
+//            var eles=formObj.elements;
+//            for(var i=0;i<eles.length;i++){
+//                alert(eles[i].type);
+//            }
+//            alert(formObj.elements.length);
+            alert(formObj.length);
+        }
+
+
+        //form对象.submit()也可以提交表单
+        function subForm(){
+            var form1=document.form1;
+            form1.submit();
+        }
+
+        //form对象.reset() 也可以重置表单
+        function reForm(){
+            var form1=document.forms[0];
+            form1.reset();
+        }
+
+        function areusure(){
+//            alert(111);
+
+            var result=confirm("确认提交吗");
+            return result;
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="获取form对象" onclick="getForm()" />
+    <input type="button" value="提交表单"  onclick="subForm()" />
+    <input type="button" value="重置表单"  onclick="reForm()" />
+    <hr/>
+    <!-- onsubmit 和onreset只能用在form表单上-->
+    <form action="http://www.baidu.com" method="get" name="form1" id="form2" onsubmit="return areusure()">
+        用户名:<input type="text" name="uname" /><br/>
+        密码:<input type="password" name="pwd" /><br/>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+    </form>
+   <!-- <form action="http://www.qq.com" method="get" name="form3" id="form4">
+        用户名:<input type="text" name="uname" /><br/>
+        密码:<input type="password" name="pwd" /><br/>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+    </form>-->
+</body>
+</html>

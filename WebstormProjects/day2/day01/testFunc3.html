@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //函数也是对象，可以作为参数传递
+        var test=function(){
+            alert("哎哟~不错哟！");
+        }
+        var test3=function(a,b){
+            alert(a+b);
+        }
+        function test2(func){
+            func();
+            alert("哎哟");
+        }
+//        test2(test);
+        //怎样使用test2去执行test3..
+       /* test2(function(){
+            test3(100,100);
+        });*/
+        test2(function(){
+            test3(100,100);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

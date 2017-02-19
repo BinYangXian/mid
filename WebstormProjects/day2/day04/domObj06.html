@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="util.js"></script>
+    <script>
+        function addDiv(){
+            var con1=$("#con1");
+            //创建一个div元素  document.createElement(标签名)
+          /*  var newDiv=document.createElement("div");//在空间中有一个    <div></div> 对象
+            newDiv.innerHTML=new Date().getTime();//newDiv  <div>hhhhhhhhhh</div>
+            //添加到父节点内部     尾部添加
+            con1.appendChild(newDiv);*/
+
+
+
+
+            var e=getFirstChild($("#con2"));
+            //克隆元素节点  元素对象.cloneNode(boolean)  true表示深度克隆   克隆结构和innerHTML  false表示浅层克隆  只克隆结构
+            var newe=e.cloneNode(true);
+//            con1.appendChild(e);//如果添加的是已存在的元素对象e  原来的会消失
+            con1.appendChild(newe);
+
+
+//            var b=$("#b");
+/*            var newDiv=document.createElement("div");//在空间中有一个    <div></div> 对象
+            newDiv.innerHTML=new Date().getTime();//newDiv  <div>hhhhhhhhhh</div>
+//            con1.insertBefore(newDiv,b);
+
+            //默认第一行添加
+            con1.insertBefore(newDiv,con1.firstChild);*/
+        }
+
+        function delDiv(){
+//            alert(111);
+            var con1=$("#con1");
+//            con1.removeChild($("#b"));
+            var last=getLastChild(con1);
+            while(last&&last.nodeType!=1){
+                last=last.previousSibling;
+            }
+            if(last){
+                con1.removeChild(last);
+            }
+        }
+
+        function replaceDiv(){
+            var con1=$("#con1");
+            con1.replaceChild(getLastChild($("#con2")).cloneNode(true),$("#b"));
+        }
+    </script>
+</head>
+<body>
+    <div style="border: 1px solid red;width: 400px;" id="con1">
+        <div id="a">aaaaaaaaaaaa</div>
+        <div id="b">bbbbbbbbbbbb</div>
+        <div>cccccccccccc</div>
+        <div>dddddddddddd</div>
+    </div>
+    <div style="border: 1px solid red;width: 400px;margin-top: 20px;" id="con2">
+        <div sky="blue">eeeeeeeeeeeee</div>
+        <div>fffffffffffff</div>
+    </div>
+    <input type="button" value="插入"  onclick="addDiv()"/>
+    <input type="button" value="删除"  onclick="delDiv()"/>
+    <input type="button" value="替换"  onclick="replaceDiv()"/>
+</body>
+</html>

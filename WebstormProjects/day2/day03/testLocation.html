@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //location  表示地址栏中的内容   任何标签都可以模拟超链接的效果。
+        function test(){
+//            alert(window.location);
+            window.location="http://www.baidu.com";
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="测试location" onclick="test()" />
+    <!-- 超链接包裹按钮  ie不支持-->
+    <a href="http://www.baidu.com"><input type="button" value="百度"></a>
+    <input type="button" value="百度" onclick="test()" />
+</body>
+</html>

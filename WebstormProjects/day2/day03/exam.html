@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //模拟一个java类
+        function Person(){
+            var uname;
+            var age;
+            var gender;
+            //构造器
+            if(arguments.length==3){
+                uname=arguments[0];
+                age=arguments[1];
+                gender=arguments[2];
+            }else if(arguments.length==2){
+                if(typeof arguments[1]=="number"){
+                    //uname和age的构造器
+                    uname=arguments[0];
+                    age=arguments[1];
+                }else{
+                    //uname和gender的构造器
+                    uname=arguments[0];
+                    gender=arguments[1];
+                }
+            }
+
+            this.setUname=function(val){
+                uname=val;
+            }
+            this.getUname=function(){
+                return uname;
+            }
+            this.setAge=function(val){
+                age=val;
+            }
+            this.getAge=function(){
+                return age;
+            }
+            this.setGender=function(val){
+                gender=val;
+            }
+            this.getGender=function(){
+                return gender;
+            }
+        }
+        function test(){
+//            var p=new Person("lisi",18,"女");
+//            var p=new Person();
+//            p.setUname("zhangsan");
+//            alert(p.getUname());
+//            alert(p.getGender());
+
+//            var p=new Person("wangwu",18);
+            var p=new Person("wangwu","男");
+            alert(p.getUname());
+            alert(p.getGender());
+            alert(p.getAge());
+        }
+        test();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

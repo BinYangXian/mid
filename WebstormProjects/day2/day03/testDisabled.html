@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(){
+            alert("执行了函数");
+        }
+        function test2(){
+            var but1=document.getElementById("but1");
+            but1.disabled=true;
+        }
+        function test3(){
+            var but1=document.getElementById("but1");
+            but1.disabled=false;
+        }
+    </script>
+</head>
+<body>
+    <!-- disabled使之失效    可以写成disabled  或 disabled="disabled"-->
+    <input type="button" value="测试disabled" onclick="test()" id="but1" />
+    <input type="button" value="使之失效" onclick="test2()" />
+    <input type="button" value="使之生效" onclick="test3()" />
+</body>
+</html>

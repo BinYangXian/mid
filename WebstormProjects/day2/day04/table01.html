@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="util.js"></script>
+    <script>
+        function addRow(){
+            var tab1=$("#tab1");
+            var newTr=document.createElement("tr");
+            var idTd=document.createElement("td");
+            idTd.innerHTML="3";
+            var nameTd=document.createElement("td");
+            nameTd.innerHTML="三三";
+            var ageTd=document.createElement("td");
+            ageTd.innerHTML="30";
+            newTr.appendChild(idTd);
+            newTr.appendChild(nameTd);
+            newTr.appendChild(ageTd);
+            getFirstChild(tab1).appendChild(newTr);
+        }
+
+        function delRow(){
+            var tab1=$("#tab1");
+            var zhangsan=$("#zhangsan");
+//            getFirstChild(tab1).removeChild(zhangsan);
+//            getLastChild(tab1).removeChild(zhangsan);
+            getChildNodes(tab1)[0].removeChild(zhangsan);
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="添加一行" onclick="addRow()"/>
+<input type="button" value="删除一行" onclick="delRow()"/>
+    <!-- table对象  中默认下面有一个tbody标签-->
+    <table border="1" align="center" width="600px" id="tab1">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        <tr id="zhangsan">
+            <td>1</td>
+            <td>张三</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>李四</td>
+            <td>20</td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        alert(d);
+        //写在函数外部的是全局变量
+        var d=123;
+        function test(){
+            //变量的声明
+            var a;
+            //变量的赋值
+            a=100;
+//            alert(a);
+            //变量的声明和赋值
+            var b="abc";
+//            alert(b);
+            //变量只声明而不赋值   结果是undefined
+            var c;
+//            alert(c);
+//            alert(d);   不能使用未经声明的变量
+
+            //写在函数内部的没有加var声明的变量也是全局变量，但是注意要使用这种全局变量，必须先执行该全局变量所在的函数，
+            //将该全局变量加载到内存中，才可以使用
+            e=new Date();
+        }
+//        test();
+
+
+        //写在函数内部的以var修饰的变量是局部变量
+        function test2(){
+//            alert(a);
+//            alert(d);
+//            var d=234;
+//            alert(d);
+
+            alert(e);
+        }
+//        test2();
+
+
+        //变量的声明的考点
+        function exam(){
+            //变量的声明会提前声明，在该赋值的地方赋值
+            alert(d);
+            var d="abc";
+            alert(d);
+            /*
+             var d;
+             alert(d);    undefined
+             d="abc";
+             alert(d);    abc
+             */
+        }
+        exam();
+    </script>
+</head>
+<body>
+    <input type="button" value="测试1" onclick="test()" />
+    <input type="button" value="测试2" onclick="test2()" />
+</body>
+</html>

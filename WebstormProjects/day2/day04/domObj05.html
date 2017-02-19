@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="util.js"></script>
+    <script>
+        //操作属性节点的方法
+        //obj.setAttribute("属性名","值")  给属性设置值
+        //obj.getAttribute("属性名")   获取属性的值
+        //当需要操作自定义属性的值的时候  必须使用setAttribute和getAttribute
+        function test(){
+//            var inp1= document.getElementsByName("inp1")[0];
+            var inp1= $("inp1")[0];
+//            alert(inp1.value);
+//            inp1.value="变不变";
+
+
+//            alert(inp1.getAttribute("value"));
+//            inp1.setAttribute("value","不改");
+
+
+//            alert(inp1.sky);
+            alert(inp1.getAttribute("sky"));
+        }
+
+    </script>
+</head>
+<body>
+    <!-- sky属于自定义的标签属性-->
+    <input type="text" value="测试" name="inp1" sky="red" />
+    <input type="button" value="测试" onclick="test()" />
+    <div id="div1" name="div1">aaaaaa</div>
+</body>
+</html>

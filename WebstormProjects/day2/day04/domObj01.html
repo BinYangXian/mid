@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function changeUrl(){
+            var a1=document.getElementById("a1");
+            a1.href="http://www.sina.com";
+        }
+
+
+        function test(){
+            var divs=document.getElementsByTagName("div");
+            for(var i=0;i<divs.length;i++){
+                alert(divs[i].innerHTML);
+            }
+        }
+        function test1(){
+            //本身 name属性一般只使用在表单域元素中   其他标签一般不能使用name
+            //其他标签中要使用getElementsByName()   需要写上id等于对应name值
+//            var inps=document.getElementsByName("inp");
+//            for(var i =0;i<inps.length;i++){
+//                alert(inps[i].value);
+//            }
+
+            var divs=document.getElementsByName("divn");
+            alert(divs.length);
+            for(var i=0;i<divs.length;i++){
+                alert(divs[i].innerHTML);
+            }
+        }
+        function test2(){
+            //通过class属性  ie是不认识的.
+            var aarray=document.getElementsByClassName("a");
+            alert(aarray.length);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="改变超链接地址"  onclick="changeUrl()"/>
+    <input type="button" value="通过标签名获取元素节点"  onclick="test()"/>
+    <input type="button" value="通过name属性获取标签"  onclick="test1()"/>
+    <input type="button" value="通过class属性获取标签"  onclick="test2()"/>
+    <a href="http://www.baidu.com" id="a1" >百度</a>
+    <div name="divn" id="divn" >aaaaaaaaaaaaaaaa</div>
+    <div>bbbbbbbbbbbbbbbb</div>
+    <div name="divn">cccccccccccccccc</div>
+    <div>dddddddddddddddd</div>
+    <span name="divn" id="divn">ffffffffffffff</span><br/>
+    <input type="text" value="aaaa" name="inp" class="a" />
+    <input type="text" value="bbbb"  />
+    <input type="text" value="cccc" name="inp" class="a"/>
+    <input type="text" value="eeee" name="inp" /><br/>
+
+
+</body>
+</html>

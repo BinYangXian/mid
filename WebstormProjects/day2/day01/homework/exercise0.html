@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        function test1(){
+            a=1;
+            var b="false";
+            if(a>b){
+                alert("a>b")
+            }else if(b>=a){
+                document.write("b>=a")
+            }else{
+                alert("无法比较")
+            }
+        }
+        function test2(a){
+            switch (a){
+                case 2:
+                        alert("传入的是2")
+                    break;
+                case undefined:
+                    alert("传入的是undefined")
+                    break;
+                case NaN:
+                    alert("传入的是NaN")
+                    break;
+                default :
+                    alert("不知道传入什么")
+            }
+        }
+        function test3(a){
+            var a=[1,2,5,8];
+           for(var i=0;i< a.length;i++){
+               alert(a[i])
+           }
+        }
+function test4(){
+    var arr=["asdf",12];
+    var arr=new Array("asdf<br>",45121);
+    arr.push("<br>ff");
+    for(var a in arr){
+        document.write(arr[a]);
+    }
+
+}
+        test4();
+    </script>
+</body>
+</html>

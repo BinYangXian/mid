@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var soap=["太阳的后裔","武林外传","琅琊榜","极品家丁"];
+        var movie=["这个杀手不太冷","肖申克的救赎","星际争霸","星球大战"];
+        function addOpt(val){
+            var sel2=document.getElementById("sel2");
+            //每次添加之前清除多余数据，只保留 请选择
+            sel2.options.length=1;
+            if(val==1){
+                for(var i=0;i<soap.length;i++){
+                    var opt=document.createElement("option");
+                    opt.innerHTML=soap[i];
+                    sel2.appendChild(opt);
+                }
+            }else if(val==2){
+                for(var i=0;i<movie.length;i++){
+                    var opt=document.createElement("option");
+                    opt.innerHTML=movie[i];
+                    sel2.appendChild(opt);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    看什么:
+        <select onchange="addOpt(this.value)">
+            <option value="0">--请选择--</option>
+            <option value="1">电视剧</option>
+            <option value="2">电影</option>
+        </select>
+    哪一部：
+       <select id="sel2">
+           <option>--请选择--</option>
+       </select>
+</body>
+</html>

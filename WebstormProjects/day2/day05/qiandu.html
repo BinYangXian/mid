@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function goSearch(){
+            var searVal=document.getElementById("sear").value;
+            var qiandus=document.getElementsByName("qiandu");
+            var val;
+            for(var i=0;i<qiandus.length;i++){
+                if(qiandus[i].checked){
+                    val=qiandus[i].value;
+                    break;
+                }
+            }
+            //https://www.baidu.com/s?wd=搜索内容
+            //https://s.taobao.com/search?q=搜索内容
+            if(val==1){
+                window.location="https://www.baidu.com/s?wd="+searVal;
+            }else if(val==2){
+                window.location="https://s.taobao.com/search?q="+searVal;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>千度一下哦!</h1>
+    <input type="text" id="sear" style="width: 300px;" />
+    <input type="button" value="千度一下" onclick="goSearch()"/><br/>
+    <input type="radio" value="1" name="qiandu" checked />百度
+    <input type="radio" value="2" name="qiandu"/>淘宝
+</body>
+</html>

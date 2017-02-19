@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //  ||和&& 在boolean环境下使用的时候同java
+
+        //  ||在非boolean环境下使用,将前面的元素转化成boolean如果为true返回前面这个元素，否则返回后面这个元素
+        //  &&在非boolean环境下使用,将前面的元素转化成boolean如果为false返回前面这个元素，否则返回后面这个元素
+        function test(){
+//            alert("abc"||true);   //abc
+//            alert(true||"123");  //true
+//            alert(false||NaN); //NaN
+//            alert(NaN||"abc");//abc
+//            alert(""||0);//0
+//            alert(" "||123);//  空格
+//            alert(undefined||"qqq");//qqq
+//            alert(null||"ppp");//ppp
+//            alert(0||123);//123
+//            alert(new Date()||100);//new Date()
+
+
+            alert("abc"&&true);   //true
+            alert(true&&"123");  //123
+            alert(false&&NaN); //false
+            alert(NaN&&"abc");//NaN
+            alert(""&&0);//""
+            alert(" "&&123);//123
+            alert(undefined&&"qqq");//undefined
+            alert(null&&"ppp");//null
+            alert(0&&123);//0
+            alert(new Date()&&100);//100
+        }
+        test();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

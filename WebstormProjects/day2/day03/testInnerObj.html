@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //测试内置对象String Math Date
+        function testString(){
+            //charAt   concat   indexOf   replace  split   substr  substring toLowerCase toUpperCase
+            var str="abc-def-gh-";
+//            alert(str.charAt(3));
+//            alert(str[2]);
+
+            var str2="ijklm";
+//            alert(str.concat(str2));
+//            alert(str+str2);
+//            alert(str.indexOf("bcd"));
+//            alert(str.indexOf("bbbbcd"));
+
+//            alert(str.replace("de","dddddddddddd"));
+//            var strs=str.split("-");
+//            alert(strs.length);
+//            for(var i=0;i<strs.length;i++){
+//                alert(strs[i]);
+//            }
+            //substring(n,m)    -->  [n,m)
+//            alert(str.substring(2,7));
+//            alert(str.substring(2,str.length));
+//            alert(str.substring(2));
+
+            //substr(n,m)  从n开始取  取m个
+//            alert(str.substr(2,3));
+            alert(str.toUpperCase());
+        }
+//        testString();
+
+        function testMath(){
+            //abs  ceil  floor  max  min  pow  random  round
+//            alert(Math.abs(-5.5));
+//            alert(Math.ceil(5.4));
+//            alert(Math.ceil(-5.4));
+//            alert(Math.ceil(-5.0));     //-5
+//            alert(Math.floor(5.9));
+//            alert(Math.floor(5.0));
+//            alert(Math.max(-5,5));
+//            alert(Math.min(-5,5));
+//            alert(Math.pow(2,3));
+//            alert(Math.round(5.5));  //正数小数的5进
+//            alert(Math.round(-5.3));
+
+            //本身 [0,1)  取0-10
+//            alert(parseInt(Math.random()*11));
+
+            //取 2-4  -->  0-2-->2-4
+            alert(parseInt(Math.random()*3)+2);
+        }
+//        testMath();
+
+        function testDate(){
+            var date2 = new Date();
+//				date2.setYear(1999);
+//				date2.setMonth(10-1) ;
+//				date2.setDate(10);    //不设的话，就是以当前时间的日期算，其他的类似。
+            //date对象.getYear()   当前年-1900
+//            document.write(date2.getYear()+"年"+"<br>");
+            //getFullYear  获取完整年份
+            document.write(date2.getFullYear()+"年"+"<br>");
+            //本身的月份是  0-11   使用时注意加上1
+            document.write(date2.getMonth()+1+"月"+"<br>");
+            document.write(date2.getDate()+"日"+"<br>");
+            document.write("星期"+date2.getDay()+"<br>");
+            document.write(date2.getHours()+"时"+"<br>");
+            document.write(date2.getMinutes()+"分"+"<br>");
+            document.write(date2.getSeconds()+"秒"+"<br>");
+            document.write("从1970.01.01至今"+date2.getTime()+"毫秒"+"<br>");
+            document.write(date2.toLocaleString());   //本地时间，即北京时间
+            document.write("<br>");
+            document.write(date2.toGMTString());  //格林尼治时间。
+        }
+        testDate();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

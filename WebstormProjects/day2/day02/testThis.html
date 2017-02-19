@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //javascript之 this你到底指向谁.
+        //谁调用我  我就指向谁
+
+        //第一种情况   没有明确调用对象的时候 是window在调用
+        function test1(){
+            console.log(this);
+        }
+//        test1();
+
+
+        //第二种情况   new对象的时候   函数中的this指向new出来的对象
+        function test2(name){
+            this.name=name;
+            console.log(this);
+        }
+//        var t=new test2("zhangsan");
+//        var t2=new test2("lisi");
+
+        //第三种  有明确调用的时候  指向调用的这个对象
+        function test3(name){
+            this.name=name;
+            this.func=function(){
+                console.log(this);
+            }
+        }
+        var t3=new test3("wangwu");
+        t3.func();
+        var t4=new test3("qianqi");
+        t4.func();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

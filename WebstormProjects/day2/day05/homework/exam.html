@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var lastSelectType;
+        function init() {
+            var watchType = document.getElementById("watchType");
+            var optionAll = watchType.options;
+
+            for (var i = 0; i < optionAll.length; i++) {
+                optionAll[i].onclick = function () {
+//                    console.log("lastSelectType:"+lastSelectType)
+                    if (lastSelectType != this.value) {
+                        console.log("select类型改变为:" + this.value)
+                        lastSelectType = this.value;
+                        var arrType1 = ["霍元甲", "太极张三丰", "我是传奇"];
+                        var arrType2 = ["转角遇到爱", "美味关系", "射雕英雄传"];
+                        var subSelect = document.getElementById("subSelect");
+                        if(subSelect.options.length>1){
+                            for(var j = 1; j < subSelect.options.length; j++) {
+                                subSelect.removeChild(subSelect.options[j]);
+                                j--;
+                            }
+                        }
+                        var type = [];
+                        if (this.value == "电影") {
+                            type = arrType1;
+                        } else if (this.value == "电视剧") {
+                            type = arrType2;
+                        } else {
+                            return;
+                        }
+
+                        for (var j = 0; j < type.length; j++) {
+                            var newOpt = document.createElement("option");
+                            newOpt.innerHTML = type[j];
+                            console.log("type[i]:" + type[j])
+                            console.log("创建-value" + newOpt.value)
+                            console.log("subSelect" + subSelect)
+                            subSelect.appendChild(newOpt);
+                        }
+                    }
+                }
+            }
+        }
+
+        function checkValue(checkObj) {
+            lastSelectType = checkObj.value;
+        }
+    </script>
+</head>
+<body onload="init()">
+看什么:
+<select onfocus="checkValue(this)" id="watchType">
+    <option>--请选择--</option>
+    <option>电视剧</option>
+    <option>电影</option>
+</select>
+哪一部：
+<select id="subSelect">
+    <option>--请选择--</option>
+</select>
+</body>
+</html>

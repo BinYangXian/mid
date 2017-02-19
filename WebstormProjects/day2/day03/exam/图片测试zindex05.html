@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+    <title></title>
+    <script>
+        //最低要求 //打开页面图片开始轮询显示   鼠标移入   停止轮询   鼠标移出 继续轮询
+        function initData() {
+            container = document.getElementById("container");
+            elementsArray = container.getElementsByTagName("div");
+            navContainer = document.getElementById("nav");
+            navArray = navContainer.getElementsByTagName("div");
+            imgIndex=1;
+            startMoving();
+        }
+        function startMoving() {
+            randomIntervalId=window.setInterval(function(){
+                var index = parseInt((imgIndex - 1) % elementsArray.length);
+                elementsArray[index].style.display="none";
+                var nextIndex = parseInt(imgIndex % (elementsArray.length));
+                elementsArray[nextIndex].style.display="block";
+                navArray[index].style.backgroundColor="blue";
+                navArray[index].style.color="red";
+                navArray[nextIndex].style.backgroundColor="red";
+                navArray[nextIndex].style.color="blue";
+                imgIndex++;
+            },1000);
+        }
+        function stopMoving() {
+            window.clearInterval(randomIntervalId);
+        }
+        function lockImg(index){
+            stopMoving();
+            for(var ele=0;ele<elementsArray.length;ele++){
+//                console.log("ele---->:"+ele);
+                if(ele!=index-1){
+                    elementsArray[ele].style.display="none";
+                    navArray[ele].style.backgroundColor="blue";
+                    navArray[ele].style.color="red";
+                }else{
+                    elementsArray[ele].style.display="block";
+                    navArray[ele].style.backgroundColor="red";
+                    navArray[ele].style.color="blue";
+                }
+            }
+            imgIndex=index;
+        }
+        //别的要求: //图片轮询时，导航的数字随着图片一起滚动，移入数字，显示对应数字的图片
+    </script>
+</head>
+<body onload="initData()">
+<div style="position:relative;width:320px;height:479px" id="container" onmouseover="stopMoving()" onmouseout="startMoving()">
+    <div style="position:absolute; top:0px; left:0px ;display:block;"><img src="1.jpg" width="320" height="479"/></div>
+    <div style="position:absolute; top:0px; left:0px;display:none;"><img src="2.jpg" width="320" height="479"/></div>
+    <div style="position:absolute; top:0px; left:0px;display:none;"><img src="3.jpg" width="320" height="479"/></div>
+    <div style="position:absolute; top:0px; left:0px ;display:none;"><img src="4.jpg" width="320" height="479"/></div>
+    <div style="position:absolute; top:0px; left:0px;display:none;"><img src="5.jpg" width="320" height="479"/></div>
+    <div style="position:absolute; top:0px; left:0px;display:none;"><img src="6.jpg" width="320" height="479"/></div>
+</div>
+<div id="nav" style="position:absolute;top:460px;left:180px">
+    <div onmouseover="lockImg(1)" onmouseout="startMoving()" style="cursor:pointer; margin-left:3px;  float:left;width:20px;height:20px;background-color:red;color:blue;text-align:center;">
+        1
+    </div>
+    <div onmouseover="lockImg(2)" onmouseout="startMoving()"style="cursor:pointer; margin-left:3px;  float:left;width:20px;height:20px;background-color:blue;color:red;text-align:center;">
+        2
+    </div>
+    <div onmouseover="lockImg(3)" onmouseout="startMoving()"style="cursor:pointer; margin-left:3px;  float:left;width:20px;height:20px;background-color:blue;color:red;text-align:center;">
+        3
+    </div>
+    <div onmouseover="lockImg(4)" onmouseout="startMoving()"style="cursor:pointer; margin-left:3px;  float:left;width:20px;height:20px;background-color:blue;color:red;text-align:center;">
+        4
+    </div>
+    <div onmouseover="lockImg(5)" onmouseout="startMoving()"style="cursor:pointer; margin-left:3px;  float:left;width:20px;height:20px;background-color:blue;color:red;text-align:center;">
+        5
+    </div>
+    <div onmouseover="lockImg(6)" onmouseout="startMoving()"style="cursor:pointer; margin-left:3px;  float:left;width:20px;height:20px;background-color:blue;color:red;text-align:center;">
+        6
+    </div>
+</div>
+</body>
+</html>

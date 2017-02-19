@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{color:red}
+    </style>
+</head>
+<body>
+    <form action="https://www.baidu.com" method="post" onsubmit="return valiAll()"  >
+        <table>
+            <tr>
+                <th><h1>用户注册</h1></th>
+            </tr>
+            <tr>
+                <th>用户名：</th>
+                <th><input type="text" name="uname" onblur="valiUname(this.value)"/></th>
+                <td id="unamePrompt"><span id="unameSpan"></span></td>
+            </tr>
+            <tr>
+                <th>密码：</th>
+                <th><input type="password" name="pwd" onkeyup="valiPwd(this.value)"/></th>
+                <td id="pwdPrompt1"><span id="pwdSpan"></span></td>
+            </tr>
+            <tr>
+                <th>重复密码：</th>
+                <th><input type="password" name="repwd" onblur="valiRepwd(this)"/></th>
+                <td id="repwdPrompt"><span id="repwdSpan"></span></td>
+            </tr>
+            <tr>
+                <th>性别：</th>
+                <td><input type="radio" name="sex" value="1" />男<input type="radio" name="sex" value="0" />女</td>
+                <td><span id="sexSpan"></span></td>
+            </tr>
+            <tr>
+                <th>爱好：</th>
+                <th><input type="checkbox" name="fav" />吃饭<input type="checkbox" name="fav" />睡觉<input type="checkbox" name="fav"/>写代码</th>
+                <td><span id="favSpan"></span></td>
+            </tr>
+            <tr>
+                <th>&nbsp;&nbsp;&nbsp;</th>
+                <td><input type="submit" value="提交注册">&nbsp;&nbsp;<input type="reset" /></td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
+<script src="../day04/util.js"></script>
+<script>
+    //如果验证到不符合要求的表单域  则表单不能够提交
+
+    //写一个表单    用户名  密码  重复密码   性别  爱好
+    //要求：用户名输入之后，如果用户名为空     用户名不能为空   如果长度不在6-16   提示用户名长度是6-16位
+    //密码输入之后，如果密码为空   密码不能为空   如果长度不在6-16   提示密码长度是6-16位   额外：提示密码强度 强(14-16)中(11-13)弱(6-10)
+    //重复密码   验证和密码的内容是否一致    不一致  则提示  两次密码输入不一致
+
+    //性别  必须选中一个    爱好至少选中一个  --->提交表单时验证
+
+
+
+    (function(){
+        //使用匿名函数自调用给sex添加事件
+        var sexs=$("sex");
+        for(var i=0;i<sexs.length;i++){
+            sexs[i].onclick=function(){
+                $("#sexSpan").innerHTML="";
+            }
+        }
+        //使用匿名函数自调用给fav添加事件
+        var favs=$("fav");
+        for(var i=0;i<favs.length;i++){
+            if(this.checked){
+                $("#favSpan").innerHTML="";
+            }else{
+                favs[i].onclick=function(){
+                    var favResult=false;
+                    for(var i=0;i<favs.length;i++){
+                        if(favs[i].checked){
+                            favResult=true;
+                            break;
+                        }
+                    }
+                    favResult?$("#favSpan").innerHTML="":$("#favSpan").innerHTML="爱好至少选中一个";
+                }
+            }
+        }
+    })()
+
+    function valiUname(unameVal){
+        var unameSpan=$("#unameSpan");
+        if(!unameVal){
+            unameSpan.innerHTML="用户名不能为空!!";
+            return false;
+        }else if(unameVal.length<6||unameVal.length>16){
+            unameSpan.innerHTML="用户名长度只能是6-16位!!";
+            return false;
+        }else{
+            unameSpan.innerHTML="";
+            return true;
+        }
+    }
+
+    function valiPwd(pwdVal){
+        var pwdSpan=$("#pwdSpan");
+        pwdSpan.style.color="red";
+        if(!pwdVal){
+            pwdSpan.innerHTML="密码不能为空!!";
+            return false;
+        }else if(pwdVal.length<6||pwdVal.length>16){
+            pwdSpan.innerHTML="密码长度只能是6-16位!!";
+            return false;
+        }else{
+            pwdSpan.style.color="green";
+            if(pwdVal.length>=6&&pwdVal.length<=10){
+                pwdSpan.innerHTML="密码强度:弱";
+            }else if(pwdVal.length>=11&&pwdVal.length<=13){
+                pwdSpan.innerHTML="密码强度:中";
+            }else{
+                pwdSpan.innerHTML="密码强度:强";
+            }
+            return true;
+        }
+    }
+    function valiRepwd(repwdObj){
+        var repwdVal=repwdObj.value;
+        var pwdVal=repwdObj.form.pwd.value;
+        var repwdSpan=$("#repwdSpan");
+        if(repwdVal!=pwdVal){
+            repwdSpan.innerHTML="两次密码输入不一致！！！";
+            return false;
+        }else{
+            repwdSpan.innerHTML="";
+            return true;
+        }
+    }
+
+    //提交的时候触发的函数
+    function valiAll(){
+        //验证性别是否选中
+        /*var sexs=$("sex");
+         var sexResult=false;
+         for(var i=0;i<sexs.length;i++){
+         if(sexs[i].checked){
+         sexResult=true;
+         break;
+         }
+         }
+         if(!sexResult){
+         $("#sexSpan").innerHTML="性别必须选中";
+         }*/
+        //验证性别必须选中一个
+        var sex=$("uname")[0].form.sex.value;
+        var sexResult=Boolean(sex);
+        sexResult?$("#sexSpan").innerHTML="":$("#sexSpan").innerHTML="性别必须选中一个";
+        //爱好至少选中一个
+        var favs=$("fav");
+        var favResult=false;
+        for(var i=0;i<favs.length;i++){
+            if(favs[i].checked){
+                favResult=true;
+                break;
+            }
+        }
+        favResult?$("#favSpan").innerHTML="":$("#favSpan").innerHTML="爱好至少选中一个";
+
+        valiUname($("uname")[0].value);
+        valiPwd($("pwd")[0].value);
+        valiRepwd($("repwd")[0]);
+        return valiUname($("uname")[0].value)&&valiPwd($("pwd")[0].value)&& valiRepwd($("repwd")[0])&&sexResult&&favResult;
+    }
+</script>

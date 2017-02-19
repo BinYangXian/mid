@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //测试Object对象
+        function testObj(){
+            //创建Object对象
+            var obj=new Object();
+            //动态添加属性
+            obj.uname="zhangsan";
+//            alert(obj.uname);
+            //动态添加函数
+            obj.func=function(){
+                alert("自定义的方法");
+            }
+            obj.func();
+            //动态的删除属性
+            delete obj.uname;
+//            alert(obj.uname);
+            //动态的删除函数
+            delete obj.func;
+            alert(obj.func);
+            obj.func();
+        }
+//        testObj();
+
+        //Json对象(重要)  一般用来完成服务器ajax请求的参数传递
+        function testJson(){
+            //格式   {键1:值1,键2:值2,...键n:值n}
+            var json={"uname":"zhangsan","password":"123","run":function(){alert("跑的很帅哦~")}};
+            //json的取值  json对象.键
+            console.log(json.uname);
+//            json.run();
+            //动态的添加属性
+//            alert(json.pwd);
+            json.pwd="123456";
+//            alert(json.pwd);
+            json.func=function (){
+                alert("1111");
+            }
+//            json.func();
+
+            //json对象的取值的另一种方式   json对象[键]   中括号内 如果不加上引号  会把传入的当做变量
+            var uname="password";
+            console.log("json[uname]:"+json[uname]);
+            console.log("json[\"uname\"]:"+json["uname"]);
+
+            //json的遍历
+            for(var i in json){
+                //取出键值对
+                console.log(i+"----"+json[i]);
+            }
+        }
+        testJson();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

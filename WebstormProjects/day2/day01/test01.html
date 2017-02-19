@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //函数的简单调用
+        //单行注释
+        /*
+        多行注释
+        */
+        //警告框
+        //alert("hello javascript!!");
+        //在控制台打印日志(控制台在打印对象信息的时候会更加详细)
+        //console.log("hello javascript!!");
+
+        //函数的定义
+        function test(){
+            alert("hello javascript!!");
+        }
+        //test();//小括号代表执行符
+
+        function test2(){
+            alert("跳不跳?");
+            return false;
+        }
+
+        function test3(){
+            alert("hello javascript!!111111111111");
+        }
+        function test4(){
+            alert("hello javascript!!222222222222222");
+        }
+        function test5(){
+            alert("hello javascript!!333333333333");
+        }
+    </script>
+</head>
+<body>
+    <!-- 任何标签都可以添加事件-->
+    <input type="button" value="测试" onclick="test()"/>
+    <div onclick="test()" style="border:1px solid red">abcdefg</div>
+    <!-- 当a标签有事件的时候 先执行执行 后跳转-->
+    <a href="http://www.baidu.com" onclick="test()" >百度1</a>
+    <!-- 只希望a标签的样式，而不希望跳转的时候一般不使用#，#会发生跳转，取到无用的数据   一般使用伪协议 javascript:void(0)-->
+    <a href="#" onclick="test()" >#</a>
+    <a href="javascript:void(0)" ondblclick="test()" >伪协议</a>
+    <a href="http://www.baidu.com" onclick="test2()" >百度2</a>
+
+    <!-- 事件后的=""    引号引起来的内容是js环境 -->
+    <input type="button" value="一次事件执行多个函数" onclick="test3();test4();test5()"/>
+
+    <!-- 超链接里的了解内容-->
+    <a href="javascript:test()" >了解内容1</a>
+    <a href="javascript:void(0)" onclick="javascript:test()">了解内容2</a>
+</body>
+</html>

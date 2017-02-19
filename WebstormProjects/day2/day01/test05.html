@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //等同符(全等符)===        不发生类型的自动转化,类型不同，直接不等
+        //等值符(弱等符) ==        会发生类型的自动转化,当数字，字符串，布尔三者进行比较的时候优先转化成数字
+        //                      如果比较的两边 出现了 undefined或null     除了和自己相等  就和彼此相等
+        function test(){
+            /*alert(""==true);   //0==1?   false
+            alert(0==false);//0==0?  true
+            alert(true=="true");//1==NaN?  false
+            alert(1=="true");//1==NaN  false
+            alert(100=="100");//true
+            alert(false=="1");//0==1  false*/
+
+            //NaN 特殊     NaN和所有包括自己都不等
+//            alert(NaN==NaN);
+//            alert(undefined==NaN);
+//            alert(null==0);
+
+
+            console.log(undefined==undefined);
+            console.log(null==null);
+            console.log(undefined==null);
+        }
+//        test();
+
+        function test1(){
+             /*alert(""===true);
+             alert(0===false);
+             alert(true==="true");
+             alert(1==="true");
+             alert(100==="100");
+             alert(false==="1");*/
+             alert(100===100);
+        }
+        test1();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

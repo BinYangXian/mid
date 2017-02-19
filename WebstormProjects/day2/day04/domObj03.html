@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //              nodeName  节点名   nodeValue 节点值   nodeType
+        //元素节点        标签名                null             1
+        //文本节点        #text                文本的值          3
+        //属性节点        属性名                属性的值          2
+        function test(){
+            var div1=document.getElementById("div1");
+            //元素节点
+//            alert("节点名:"+div1.nodeName);
+//            alert("节点值:"+div1.nodeValue);
+
+
+//            alert("节点类型:"+div1.nodeType);
+
+            //文本节点
+//            alert("节点名:"+div1.childNodes[0].nodeName);
+//            alert("节点值:"+div1.firstChild.nodeValue);
+//            alert("节点类型:"+div1.lastChild.nodeType);
+
+            //属性节点
+            alert("节点名:"+div1.attributes[0].nodeName);
+            alert("节点值:"+div1.attributes[0].nodeValue);
+            alert("节点类型:"+div1.attributes[0].nodeType);
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <input type="button" value="测试" onclick="test()" />
+    <div>
+        <div id="div1">aaaaaaaaaaaaaaaa</div>
+        <div>bbbbbbbbbbbbbbbb</div>
+        <div>cccccccccccccccc</div>
+        <div>dddddddddddddddd</div>
+    </div>
+</body>
+</html>

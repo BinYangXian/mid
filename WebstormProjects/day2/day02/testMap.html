@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //模拟Map
+        function Map(){
+            //创建一个装键值对的容器
+            var container={};
+            this.put=function(key,value){
+                container[key]=value;
+            }
+            this.get=function(key){
+                return container[key];
+            }
+            this.values=function(){
+                var valuesArray=[];
+                for(var i in container){
+                    valuesArray.push(container[i]);
+                }
+                return valuesArray;
+            }
+            this.size=function(){
+                var count=0;
+                for(var i in container){
+                    count++;
+                }
+                return count;
+            }
+            this.remove=function(key){
+                delete container[key];
+            }
+            this.keySet=function(){
+                var keyArray=[];
+                for(var i in container){
+                    keyArray.push(i);
+                }
+                return keyArray;
+            }
+            this.isEmpty=function(){
+                //两种方式
+//                return this.size()==0?true:false;
+
+                for(var i in container){
+                    return false;
+                }
+                return true;
+            }
+            this.containsKey=function(key){
+                for(var i in container){
+                    if(i==key){
+                        return true;
+                    }
+                }
+                return false;
+            }
+            this.containsValue=function(value){
+                for(var i in container){
+                    if(container[i]==value){
+                        return true;
+                    }
+                }
+                return false;
+            }
+            this.clear=function(){
+                //清除的两种方式
+
+                /*for(var i in container){
+                    delete container[i];
+                }*/
+
+                container={};
+            }
+            //用于测试的方法
+            this.showMap=function(){
+                console.log(container);
+            }
+        }
+        var map=new Map();
+//        alert(map.isEmpty());
+        map.put("a","aaa");
+        map.put("b","bbb");
+        map.put("c","ccc");
+//        alert(map.isEmpty());
+//        map.showMap();
+//        alert(map.get("a"));
+//        alert(map.values());
+//        alert(map.size());
+//        alert(map.keySet());
+//        alert(map.containsKey("b"));
+//        alert(map.containsValue("bbb"));
+//        map.remove("b");
+//        alert(map.containsValue("bbb"));
+//        alert(map.containsKey("b"));
+//        alert(map.containsKey("d"));
+//        alert(map.size());
+//        alert(map.keySet());
+        alert(map.isEmpty());
+        map.showMap();
+        map.clear();
+        map.showMap();
+        alert(map.isEmpty());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

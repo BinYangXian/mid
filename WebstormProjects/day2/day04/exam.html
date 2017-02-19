@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="util.js"></script>
+    <style>
+        div div{border:1px solid black;float: left;width: 20%}
+
+    </style>
+    <script>
+        function addPerson(){
+            var id=$("#perId").value;
+            var name=$("#perName").value;
+            var age=$("#perAge").value;
+            var span1=$("#span1");
+            //第一种
+           /* var con=document.createElement("div");
+            con.style="clear: left";
+            var idDiv=document.createElement("div");
+            idDiv.innerHTML=id;
+            var nameDiv=document.createElement("div");
+            nameDiv.innerHTML=name;
+            var ageDiv=document.createElement("div");
+            ageDiv.innerHTML=age;
+
+            //将创建好的div装入大的div
+            con.appendChild(idDiv);
+            con.appendChild(nameDiv);
+            con.appendChild(ageDiv);
+
+            span1.appendChild(con);*/
+
+
+            //第二种
+           /* var con=document.createElement("div");
+            con.style="clear: left";
+            con.innerHTML="<div>"+id+"</div>"+
+                          "<div>"+name+"</div>"+
+                          "<div>"+age+"</div>";
+            span1.appendChild(con);*/
+
+            //第三种
+            var con=getFirstChild(span1).cloneNode(true);
+            getChildNodes(con)[0].innerHTML=id;
+            getChildNodes(con)[1].innerHTML=name;
+            getChildNodes(con)[2].innerHTML=age;
+            span1.appendChild(con);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="添加"  onclick="addPerson()"/>
+    <div style="clear: left;">
+        <div>编号:<input type="text" id="perId"/></div>
+        <div>姓名:<input type="text" id="perName"/></div>
+        <div>
+            年龄:<input type="text" id="perAge"/>
+        </div>
+    </div>
+    <div style="clear: left;">
+        <div>编号</div>
+        <div>姓名</div>
+        <div>年龄</div>
+    </div>
+    <span id="span1">
+        <div style="clear: left">
+            <div>1</div>
+            <div>张三</div>
+            <div>20</div>
+        </div>
+        <div style="clear: left">
+            <div>2</div>
+            <div>李四</div>
+            <div>25</div>
+        </div>
+    </span>
+</body>
+</html>

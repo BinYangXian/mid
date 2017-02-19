@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(){
+            var unameObj=document.form1.uname;
+            alert("现在的值:"+unameObj.value);
+            alert("默认的值:"+unameObj.defaultValue);
+        }
+
+        //利用默认值  模拟重置按钮
+        function resetForm(){
+            var formObjs=document.form1.elements;
+            for(var i=0;i<formObjs.length;i++){
+                //使现在的值等于默认值
+                formObjs[i].value=formObjs[i].defaultValue;
+            }
+        }
+
+
+        function changeVal(obj,flag){
+            var val=obj.value;
+            var defaultVal=obj.defaultValue;
+            if(val==defaultVal){
+                if(flag){
+                    obj.type="password";
+                }
+                obj.value="";
+            }
+        }
+
+        function resetVal(obj,flag){
+            var val=obj.value;
+            if(!val){
+               if(flag){
+                   obj.type="text";
+               }
+               obj.value=obj.defaultValue;
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="测试" onclick="test()" />
+    <input type="button" value="重置" onclick="resetForm()" />
+    <hr/>
+    <form action="http://www.baidu.com" method="get" name="form1" id="form2" onsubmit="return areusure()">
+        用户名:<input type="text" name="uname" value="请输入用户名" onfocus="changeVal(this)" onblur="resetVal(this)"/><br/>
+        密码:<input type="text" name="pwd" value="请输入密码"  onfocus="changeVal(this,true)" onblur="resetVal(this,true)"/><br/>
+        手机号:<input type="text" name="phone" value="110" /><br/>
+        邮箱:<input type="text" name="mail"  value="110@qq.com"  /><br/>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+    </form>
+</body>
+</html>
