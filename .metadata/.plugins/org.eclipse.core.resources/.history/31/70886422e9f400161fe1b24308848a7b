@@ -1,0 +1,27 @@
+package com.cdsxt.vo;
+
+public class TestBean {
+	//用于反射测试的属性
+	private int id;
+	String name;
+	protected String email;
+	public boolean handsome;
+	public static int gender;
+	public String a;
+	//用于反射测试的方法
+	public void test(){
+		System.out.println("hello reflect!!");
+	}
+	
+	public int add(int a,int b){
+		System.out.println("a+b的结果:"+(a+b));
+		return a+b;
+	}
+	
+	public static void test2(){
+		System.out.println("静态的方法");
+	}
+	private String test3(String name){
+		return "你好帅啊"+name;
+	}
+}

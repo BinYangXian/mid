@@ -1,0 +1,86 @@
+package com.cdsxt.action;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.cdsxt.dao.EmpInfoDao;
+import com.cdsxt.dao.ManagerDao;
+import com.cdsxt.vo.Employee;
+
+public class MyManagerServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ManagerDao managerDao=new ManagerDao();
+	private EmpInfoDao empInfoDao;
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		this.doPost(request, response);
+	}
+	@Override
+	public void init() throws ServletException {
+		empInfoDao=new EmpInfoDao();
+	}
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String mark=request.getParameter("mark");
+		if("login".equals(mark)){
+			managerLogin(request,response);
+		}else if("regis".equals(mark)){
+			managerRegis(request,response);
+		}
+	}
+	//管理员登陆
+	public void managerLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String uname=request.getParameter("uname");
+		String pwd=request.getParameter("pwd");
+		//登陆成功则为true 否则为false
+		boolean result=managerDao.managerLogin(uname,pwd);
+		if(result){
+			ResultSet resultSet = empInfoDao.queryTab();//查询数据库，得到员工信息集合
+			List<Employee> empList=new ArrayList();
+			try {
+				while(resultSet.next()){
+					Employee emp=new Employee(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3));
+					empList.add(emp);
+				}
+				request.setAttribute("empList", empList);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("success.jsp").forward(request, response);
+		}else{
+			request.setAttribute("msg", "<h3>用户名或密码错误</h3>");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	}
+	
+	//管理员注册
+	public void managerRegis(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String uname=request.getParameter("uname");
+		String pwd=request.getParameter("pwd");
+		//调用jdbc验证用户名是否存在 true为存在 false 不存在
+		boolean result=managerDao.valiUname(uname);
+		if(result){
+			request.setAttribute("msg", "<h3>用户名已存在</h3>");
+			request.getRequestDispatcher("regis.jsp").forward(request, response);
+		}else{
+			//保存用户名和密码
+			managerDao.managerRegis(uname,pwd);
+			request.setAttribute("msg", "<h3>注册成功请登录</h3>");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	}
+}

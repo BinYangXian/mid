@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>login.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script>
+		function showOrHide(result){
+			var timeDiv=document.getElementsByTagName('div')[0];
+			var times=document.getElementsByName('time');
+			if(result){
+				times[1].checked=true;
+				timeDiv.style.display='block';
+			}else{
+				for(var i=0;i<times.length;i++){
+					times[i].checked=false;
+				}
+				timeDiv.style.display='none';
+			}
+		}
+	
+	</script>
+  </head>
+  
+  <body>
+    <h1>用户登陆页面</h1>
+	<form action='userServlet?mark=login' method='get'>
+		用户名:<input type='text' name='uname' /><br/>
+		密码:	<input type='password' name='pwd' /><br/>
+			<input type="checkbox" onclick="showOrHide(this.checked)" />是否保存用户名和密码<br/>
+			<div style="display: none">
+				<input type="radio" name="time" value="1" />一天
+				<input type="radio" name="time" value="2" />一周
+				<input type="radio" name="time" value="3" />一个月
+			</div>
+			<input type='submit' value='登陆' />
+	</form>
+  </body>
+</html>

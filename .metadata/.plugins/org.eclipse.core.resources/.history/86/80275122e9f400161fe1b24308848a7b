@@ -1,0 +1,30 @@
+package com.cdsxt.vo;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class Exam2 {
+	public static void main(String[] args) {
+		Class clazz=Exam.class;
+		try {
+			Constructor constructor = clazz.getDeclaredConstructor();
+			constructor.setAccessible(true);
+			Exam instance = (Exam) constructor.newInstance();
+			constructor.setAccessible(false);
+			
+			Field field = clazz.getDeclaredField("name");
+			field.setAccessible(true);
+			field.set(instance, "张三");
+			field.setAccessible(false);
+			
+			Method method = clazz.getDeclaredMethod("test");
+			method.setAccessible(true);
+			method.invoke(instance);
+			method.setAccessible(false);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}	

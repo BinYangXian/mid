@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+tomcat6Server.LoginAndRegis8.IEARProjectName=
+tomcat6Server.LoginAndRegis8.altContextRoot=
+tomcat6Server.LoginAndRegis8.contextRoot=/LoginAndRegis8
+tomcat6Server.LoginAndRegis8.deployIsOverProject=false
+tomcat6Server.LoginAndRegis8.deploymentPath=C\:\\apache-tomcat-6.0.32\\webapps\\LoginAndRegis8
+tomcat6Server.LoginAndRegis8.isDeployed=true
+tomcat6Server.LoginAndRegis8.isExploded=true
+tomcat6Server.LoginAndRegis8.isUptoDate=true
+tomcat6Server.LoginAndRegis8.noFileCopy=false
+tomcat6Server.LoginAndRegis8.shouldBackup=false
+tomcat6Server.LoginAndRegis8.shouldOverwrite=false
+tomcat6Server.LoginAndRegis8.type=WebDeployment

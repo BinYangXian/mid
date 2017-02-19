@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;AjaxSearchToolbar/WebRoot/login.jsp&apos; to &apos;ajaxSearchToolbar.jsp&apos;" description="Rename resource &apos;login.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebRoot/login.jsp" name="ajaxSearchToolbar.jsp" stamp="1486549834956" updateReferences="true"/>
+</session>

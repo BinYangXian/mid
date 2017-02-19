@@ -1,0 +1,29 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java"  pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+  <head>
+
+  </head>
+  
+  <body>
+    <h1>欢迎登陆本系统</h1>
+    <hr/>
+    
+    	 	<table>
+	 	   <tr>
+	            <th>员工编号</th>
+	    		<th>员工姓名</th>
+	    		<th>员工职位</th>
+            </tr>
+<c:forEach var="i" items="${empList }">
+    		<tr>
+	    		<td>${i.number }</td>
+	    		<td>${i.name }</td>
+	    		<td>${i.job }</td>
+    		</tr>
+	 </c:forEach>
+	 	</table>
+    
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="FilterExam"
+  id="myeclipse.1487403989875"
+  context-root="/FilterExam"
+  j2ee-spec="5.0"
+  archive="FilterExam.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

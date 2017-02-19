@@ -1,0 +1,32 @@
+jsp运行原理(jsp为什么修改代码后不需要重启)：
+	浏览器地址访问http://localhost:8080/TestJsp/first.jsp(以.jsp结尾的路径),会被tomcat下的web.xml中配置的jsp引擎（org.apache.jasper.servlet.JspServlet）拦截下来，
+jsp引擎调用相关的java代码在work目录下生成对应的.java和.class文件，执行.class，默认调用_jspService方法。	
+
+
+静态引入：
+	<%@include file="要引入的文件地址"  %>
+	特点：
+		1.不管引入多少的页面，最终只生成1个.java文件，将被引入页面的代码直接写入执行的这个.java文件。
+		2.耦合性高
+		3.不灵活(不能使用相同的变量名)
+		4.效率高
+		
+
+动态引入：
+	<jsp:include page="要引入的文件地址" ></jsp:include>
+	特点：
+		1.生成多个.java文件，通过org.apache.jasper.runtime.JspRuntimeLibrary.include方法将被引入页面的内容引入到该页面。
+		2.耦合性低
+		3.灵活
+		4.效率低
+		
+一般使用动态引入。
+		
+		
+一次会话：
+	打开浏览器访问服务器，服务器调用request.getSession()，直到浏览器关闭。
+
+session生成机制：
+	服务器代码必须调用request.getSession(),请求头中如果没有jsessionID的这个cookie信息，会创建一个新的session对象。
+如果有jsessionID，会找该jsessionID所对应的session对象，如果没有找到或该session失效，则会创建一个新的session，如果没有失效，
+则使用找到的这个session对象。

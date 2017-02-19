@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+  <servlet>
+  		<servlet-name>first</servlet-name>
+  		<servlet-class>com.cdsxt.action.FirstServlet</servlet-class>
+  </servlet>	
+  <servlet-mapping>
+  		<servlet-name>first</servlet-name>	
+  		<url-pattern>/one</url-pattern>	
+  		<url-pattern>/two</url-pattern>	
+  		<url-pattern>/three/four</url-pattern>	
+  		<url-pattern>/three.asp</url-pattern>
+  		<url-pattern>/boy.net</url-pattern>
+  		<url-pattern>/girl.html</url-pattern>
+  		<url-pattern>/man.php</url-pattern>
+  		<url-pattern>/aaa/*</url-pattern>
+  		<!--  
+  			以*.html结尾   前面不能有任何/
+  			<url-pattern>/aaa/*.html</url-pattern>
+  			<url-pattern>/*.html</url-pattern>
+  		 -->
+  		<url-pattern>*.xx</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>lifeServlet</servlet-name>
+  	<servlet-class>com.cdsxt.action.LifeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>lifeServlet</servlet-name>
+  	<url-pattern>/lifeServlet</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>aaa.jsp</welcome-file>
+    <welcome-file>bbb.jsp</welcome-file>
+    <welcome-file>ccc.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

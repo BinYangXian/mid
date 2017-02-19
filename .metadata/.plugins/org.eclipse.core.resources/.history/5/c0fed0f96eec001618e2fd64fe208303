@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <tr>
+                <th><h1>用户注册</h1></th>
+            </tr>
+<form action="#" align="center" ">
+    <table border="1" width="50%" height="80%" bgcolor="FFFFCC" align="center">
+        <tr>
+            <th/>
+            用户名(用户名长度是6-16位)
+            <th/>
+            <input type="text" name="uname"  id="userName"/>
+        </tr>
+        <tr>
+            <th/>
+            密码(密码长度是6-16位)
+            <th/>
+            <input type="password" name="pwd"  id="userPwd"/>
+        </tr>
+        <tr>
+            <th/>
+            重复密码
+            <th/>
+            <input type="password" name="newpwd"  id="userPwdConfirm"/>
+        </tr>
+        <tr>
+            <th/>
+            性别(必须选择一个)
+            <th id="gender">
+                <input type="radio" name="sex" value="1"/>男
+                <input type="radio" name="sex" value="0"/>女
+            </th>
+        </tr>
+        <tr>
+            <th/>
+            爱好（至少选择一个）
+            <th id="hobby">
+                <input type="checkbox"/>喝酒
+                <input type="checkbox"/>打牌
+                <input type="checkbox"/>抽烟
+            </th>
+        </tr>
+    </table>
+    <input type="submit" value="提交信息"/>&nbsp;
+    <input type="reset" value="重置"/>
+</form>
+</body>
+</html>

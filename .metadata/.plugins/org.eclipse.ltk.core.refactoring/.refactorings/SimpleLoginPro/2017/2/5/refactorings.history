@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;iconPath&apos; from expression &apos;context.getAttribute(&quot;iconPath&quot;)&apos;&#x0D;&#x0A;- Original project: &apos;SimpleLoginPro&apos;&#x0D;&#x0A;- Variable name: &apos;iconPath&apos;&#x0D;&#x0A;- Destination method: &apos;com.bjsxt.learnServlet.SuccessPage.doPost()&apos;&#x0D;&#x0A;- Variable expression: &apos;context.getAttribute(&quot;iconPath&quot;)&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;iconPath&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src&lt;com.bjsxt.learnServlet{SuccessPage.java" name="iconPath" replace="true" selection="1069 32" stamp="1486186304836" version="1.0"/>
+</session>

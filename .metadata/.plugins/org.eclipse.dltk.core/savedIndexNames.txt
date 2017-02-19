@@ -1,0 +1,2 @@
+G:\MyEclipse\.metadata\.plugins\org.eclipse.dltk.core\673812344.index
+G:\MyEclipse\.metadata\.plugins\org.eclipse.dltk.core\1596899310.index

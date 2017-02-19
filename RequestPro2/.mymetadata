@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="RequestPro2"
+  id="myeclipse.1484879637312"
+  context-root="/RequestPro2"
+  j2ee-spec="5.0"
+  archive="RequestPro2.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

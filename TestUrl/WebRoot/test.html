@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<!--
+  		页面上的绝对路径的/  代表端口号后   和重定向一样  
+  		http://localhost:8080/TestUrl/one/two/servlet1
+	    http://localhost:8080/TestUrl/three/servlet2
+  	
+  		http://localhost:8080/TestUrl/test.html
+  	 -->
+     <a href="one/two/servlet1" >相对路径访问servlet1</a> 
+	<a href="/TestUrl/one/two/servlet1" >绝对路径访问servlet1</a>
+  </body>
+</html>

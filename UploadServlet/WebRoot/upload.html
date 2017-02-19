@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>upload.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  	<!--  文件上传   method必须使用post   enctype 值默认是键值对      改为multipart/form-data -->
+    <form action="uploadServlet2" method="post" enctype="multipart/form-data">
+    	用户名:<input type="text" name="uname" /><br/>
+    	密码:<input type="password" name="pwd" /><br/><img src="http://www.baidu.com/img/baidu_logo.gif" width="50" height="50" >
+    	头像:<input type="file" name="photo" /><br/>
+    	<input type="submit" value="提交" />
+    </form>
+  </body>
+</html>

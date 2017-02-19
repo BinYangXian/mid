@@ -1,0 +1,62 @@
+<%@ page language="java"  pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+  <head>
+
+  </head>
+  
+  <body>
+    <h1>欢迎登陆本系统</h1>
+    <hr/>
+    	<input type="button"  value="添加"  onclick="addRow();"    >
+    	 	<table id="table1">
+	 	   <tr>
+	            <th>员工编号</th>
+	    		<th>员工姓名</th>
+	    		<th>员工职位</th>
+            </tr>
+			<c:forEach var="i" items="${empList }" name="cb1">
+	    		<tr>
+		    		<td>${i.number }</td>
+		    		<td>${i.name }</td>
+		    		<td>${i.job }</td>
+		    		<td><a href="changeEmpServlet?mark=delete&staIndex=${i.number }">删除该员工</a></td>
+	    		</tr>
+	 		</c:forEach>
+	 	</table>
+    
+  </body>
+  <script type="text/javascript">
+  	//页面新添加一行
+			function addRow(){
+				var table1=document.getElementById("table1");
+				var newTr=table1.insertRow(table1.rows.length);
+				newTr.align="center";
+				 var chTd=newTr.insertCell(0);
+				//偷懒的方式
+				chTd.innerHTML="保存/编辑<input type='checkbox' name='cb1' checked onclick='chaValue(this);' />"; 
+				for(var i=1;i<table1.rows[0].cells.length;i++){
+					var newTd=newTr.insertCell(i);
+					newTd.innerHTML="<input type='text' />";
+				}
+			}
+			//如果是选中状态  则变为可输入   如果是非选中状态  则变为锁定
+			function chaValue(chObj){
+				if(chObj.checked){
+					//利用for循环对每一个列进行操作
+					for(var i=1;i<chObj.parentNode.parentNode.cells.length;i++){
+						var val=chObj.parentNode.parentNode.cells[i].innerHTML;
+						chObj.parentNode.parentNode.cells[i].innerHTML="保存/编辑<input type='text'  value='"+val+"'/>";
+					}
+				}else{
+				var arr=[];
+					for(var i=1;i<chObj.parentNode.parentNode.cells.length;i++){
+						var val=getChildNodes(chObj.parentNode.parentNode.cells[i])[0].value;
+						arr.push(val);
+						chObj.parentNode.parentNode.cells[i].innerHTML=val;
+					}
+				
+				}
+			}
+  </script>
+</html>

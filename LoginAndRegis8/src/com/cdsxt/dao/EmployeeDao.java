@@ -1,0 +1,154 @@
+package com.cdsxt.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cdsxt.po.Employee;
+import com.cdsxt.util.DBUtil;
+
+public class EmployeeDao {
+	//全表查询所有员工并且装入一个list返回
+	public List<Employee> queryEmps(){
+		Connection conn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<Employee> empList=new ArrayList<Employee>();
+		try {
+			conn=DBUtil.getConn();
+			String sql="select * from employee";
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				int id=rs.getInt("id");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				int age=rs.getInt("age");
+				int gender=rs.getInt("gender");
+				empList.add(new Employee(id, name, age, email, gender));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(rs,ps,conn);
+		}
+		return empList;
+	}
+	
+	//添加员工
+	public void addEmp(String name,String email,int age,int gender){
+		Connection conn=null;
+		PreparedStatement ps=null;
+		try {
+			conn=DBUtil.getConn();
+			String sql="insert into employee(name,age,gender,email) values(?,?,?,?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setInt(2, age);
+			ps.setInt(3, gender);
+			ps.setString(4, email);
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(ps,conn);
+		}
+	}
+	
+	//根据id删除员工
+	public void delEmp(int id){
+		Connection conn=null;
+		PreparedStatement ps=null;
+		try {
+			conn=DBUtil.getConn();
+			String sql="delete from employee where id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(ps,conn);
+		}
+	}
+	//根据id查询员工信息
+	public Employee queryForUpdate(int id){
+		Connection conn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		Employee employee=null;
+		try {
+			conn=DBUtil.getConn();
+			String sql="select * from employee where id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				int age=rs.getInt("age");
+				int gender=rs.getInt("gender");
+				employee=new Employee(id, name, age, email, gender);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(rs,ps,conn);
+		}
+		return employee;
+	}
+	
+	//修改员工信息
+	public void updateEmp(int id,String name,int age,int gender,String email){
+		Connection conn=null;
+		PreparedStatement ps=null;
+		try {
+			conn=DBUtil.getConn();
+			String sql="update employee set name=?,age=?,gender=?,email=? where id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setInt(2, age);
+			ps.setInt(3, gender);
+			ps.setString(4, email);
+			ps.setInt(5, id);
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(ps,conn);
+		}
+	}
+	
+	//分页查询员工数据
+	public List<Employee> queryByPage(int startRow,int pageRow){
+		Connection conn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<Employee> empList=new ArrayList<Employee>();
+		try {
+			conn=DBUtil.getConn();
+			String sql="select * from employee limit ?,?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, startRow);
+			ps.setInt(2, pageRow);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				int id=rs.getInt("id");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				int age=rs.getInt("age");
+				int gender=rs.getInt("gender");
+				empList.add(new Employee(id, name, age, email, gender));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(rs,ps,conn);
+		}
+		return empList;
+	}
+}

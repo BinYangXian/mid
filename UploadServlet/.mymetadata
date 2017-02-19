@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="UploadServlet"
+  id="myeclipse.1485054879640"
+  context-root="/UploadServlet"
+  j2ee-spec="5.0"
+  archive="UploadServlet.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

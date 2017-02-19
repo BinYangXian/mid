@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;st&apos; in &apos;com.cdsxt.dao.ManagerDao.valiUname(...)&apos; to &apos;ps&apos;&#x0D;&#x0A;- Original project: &apos;LoginAndRegis7&apos;&#x0D;&#x0A;- Original element: &apos;com.cdsxt.dao.ManagerDao.valiUname(String).st&apos;&#x0D;&#x0A;- Renamed element: &apos;st&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;st&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.cdsxt.dao{ManagerDao.java[ManagerDao~valiUname~QString;@st!515!562!533!534!QPreparedStatement;!0!false" name="ps" references="true" stamp="1487243989787" version="1.0"/>
+</session>

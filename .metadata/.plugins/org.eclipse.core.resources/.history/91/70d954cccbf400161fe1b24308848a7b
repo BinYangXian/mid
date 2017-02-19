@@ -1,0 +1,20 @@
+package com.cdsxt.vo;
+
+public class MyTest {
+
+	public static void main(String[] args) throws Exception {
+		test();
+	}
+	static void test() throws Exception {
+		//获取反射模板的三种方法
+		Class clazz1=Class.forName("com.cdsxt.vo.TestBean");
+		Class clazz2=TestBean.class;
+		TestBean bean=new TestBean();
+		bean.getClass();
+		
+		System.out.println(clazz1.getName());
+		System.out.println(clazz1.getSimpleName());
+		System.out.println();
+	}
+
+}

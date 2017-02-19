@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="AjaxExam4"
+  id="myeclipse.1486628617718"
+  context-root="/AjaxExam4"
+  j2ee-spec="5.0"
+  archive="AjaxExam4.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

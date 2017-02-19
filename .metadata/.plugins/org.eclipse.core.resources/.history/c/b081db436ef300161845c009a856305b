@@ -1,0 +1,5 @@
+package com.cdsxt.dao;
+
+public class EmpInfoDao {
+
+}

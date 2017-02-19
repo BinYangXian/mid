@@ -1,0 +1,13 @@
+package com.cdsxt.vo;
+
+public class MyTest {
+
+	public static void main(String[] args) throws Exception {
+		test();
+	}
+	static void test() throws Exception {
+		Class clazz=Class.forName("com.cdsxt.vo.TestBean");
+		
+	}
+
+}

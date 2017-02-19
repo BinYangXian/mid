@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ELAndJstlExam/src/com/cdsxt/action/InitServlet.java&apos; to &apos;InitInfoServlet.java&apos;" description="Rename resource &apos;InitServlet.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/com/cdsxt/action/InitServlet.java" name="InitInfoServlet.java" stamp="1486471580087" updateReferences="true"/>
+</session>

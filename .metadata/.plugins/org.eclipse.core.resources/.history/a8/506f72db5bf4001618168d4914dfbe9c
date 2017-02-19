@@ -1,0 +1,97 @@
+package com.cdsxt.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cdsxt.po.Employee;
+
+public class EmployeeDao {
+	//全表查询所有员工并且装入一个list返回
+	public List<Employee> queryEmps(){
+		List<Employee> empList=new ArrayList<Employee>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mytest", "root", "root");
+			Statement st=conn.createStatement();
+			String sql="select * from employee";
+			ResultSet rs=st.executeQuery(sql);
+			while(rs.next()){
+				int id=rs.getInt("id");
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				int age=rs.getInt("age");
+				int gender=rs.getInt("gender");
+				empList.add(new Employee(id, name, age, email, gender));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return empList;
+	}
+	
+	//添加员工
+	public void addEmp(String name,String email,int age,int gender){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mytest", "root", "root");
+			Statement st=conn.createStatement();
+			String sql="insert into employee(name,age,gender,email) values('"+name+"',"+age+","+gender+",'"+email+"')";
+			st.execute(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//根据id删除员工
+	
+	public void delEmp(int id){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mytest", "root", "root");
+			Statement st=conn.createStatement();
+			String sql="delete from employee where id="+id;
+			st.execute(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//根据id查询员工信息
+	public Employee queryForUpdate(int id){
+		Employee employee=null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mytest", "root", "root");
+			Statement st=conn.createStatement();
+			String sql="select * from employee where id="+id;
+			ResultSet rs=st.executeQuery(sql);
+			while(rs.next()){
+				String name=rs.getString("name");
+				String email=rs.getString("email");
+				int age=rs.getInt("age");
+				int gender=rs.getInt("gender");
+				employee=new Employee(id, name, age, email, gender);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employee;
+	}
+	
+	//修改员工信息
+	public void updateEmp(int id,String name,int age,int gender,String email){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mytest", "root", "root");
+			Statement st=conn.createStatement();
+			String sql="update employee set name='"+name+"',age="+age+",gender="+gender+",email='"+email+"' where id="+id;
+			st.execute(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

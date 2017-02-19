@@ -1,0 +1,14 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<html>
+<body>
+<h1>用户注册页面</h1>
+<form action='userLogic.jsp' method='get'>
+		<input type='hidden' name='mark' value='regis' />
+		用户名:<input type='text' name='uname' /><br/>
+		密码:<input type='password' name='pwd' /><br/>
+		重复密码:<input type='password' name='repwd' /><br/>
+		<input type='submit' value='注册' />	
+		<a href='loginPage.jsp' >登陆页面</a>
+		</form>
+</body>
+</html>

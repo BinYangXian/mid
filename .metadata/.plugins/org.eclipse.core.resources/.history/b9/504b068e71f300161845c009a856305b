@@ -1,0 +1,40 @@
+package com.cdsxt.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class EmpInfoDao {
+	private boolean addColumn(String ename,String job){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root", "proot");
+			Statement st=conn.createStatement();
+			//TODO
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	private ResultSet queryTab(String ename,String job){
+		ResultSet resultSet = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root", "proot");
+			Statement st=conn.createStatement();
+			String sqlQuery="select * from myEmp";
+			resultSet = st.executeQuery(sqlQuery);
+			return resultSet;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			return null;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="AjaxSearchToolbar"
+  id="myeclipse.1486549748467"
+  context-root="/AjaxSearchToolbar"
+  j2ee-spec="5.0"
+  archive="AjaxSearchToolbar.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

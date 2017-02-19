@@ -1,0 +1,8 @@
+package com.cdsxt.vo;
+
+public class Employee {
+	private int number;
+	private String name;
+	private String job;
+	
+}

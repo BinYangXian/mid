@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ResponsePro"
+  id="myeclipse.1484817360921"
+  context-root="/ResponsePro"
+  j2ee-spec="5.0"
+  archive="ResponsePro.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

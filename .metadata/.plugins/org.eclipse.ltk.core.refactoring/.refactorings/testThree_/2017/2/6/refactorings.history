@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;cityList&apos; in &apos;com.cdsxt.action.AreaServlet.doPost(...)&apos; to &apos;areaList&apos;&#x0D;&#x0A;- Original project: &apos;testThree&apos;&#x0D;&#x0A;- Original element: &apos;com.cdsxt.action.AreaServlet.doPost(HttpServletRequest, HttpServletResponse).cityList&apos;&#x0D;&#x0A;- Renamed element: &apos;cityList&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;cityList&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.cdsxt.action{AreaServlet.java[AreaServlet~doPost~QHttpServletRequest;~QHttpServletResponse;@cityList!1784!1866!1795!1802!QList\&lt;QCity;&gt;;!0!false" name="areaList" references="true" stamp="1486718755760" version="1.0"/>
+</session>
